@@ -7,8 +7,8 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    margin: 20px;
+    margin: 10px;
     font-family: system-ui;
-    padding:0.5rem auto;
+    padding:0;
   }
 `;

@@ -1,6 +1,5 @@
 import styled from "styled-components";
-export default function Button({ children}) {
-  const Button = styled.button`
+const StyledButton = styled.button`
     width: 10rem;
     height: 2rem;
     background-color: #0a0a23;
@@ -8,9 +7,11 @@ export default function Button({ children}) {
     border: none;
     border-radius: 10px;
     box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
-    margin-top:20px;
+    
     
   `;
+  export default function Button({ type, children, onClick}) {
+  
 
-  return <Button type="button">{children}</Button>;
+  return <StyledButton type={type} onClick={onClick}>{children}</StyledButton>;
 }
