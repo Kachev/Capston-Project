@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import Button from "../../components/Button";
 import Forms from "../../components/ReportsLists";
-import { WorkReports } from "../../DB/data";
-import useLocalStorageState from "use-local-storage-state";
 import { useRouter } from "next/router";
 
 const StyledSection = styled.section`
@@ -11,18 +9,19 @@ const StyledSection = styled.section`
   align-items: center;
 `;
 
-export default function ReportsList() {
+export default function ReportsList({}) {
   const router = useRouter();
-  const [newWorkReports, _] = useLocalStorageState("workReport", {
-    defaultValue: WorkReports,
-  });
+  const newWorkReports = JSON.parse(router.query.newWorkReports || "[]");
+
   function handleOnClick() {
     router.push("/");
   }
   return (
     <StyledSection>
       <Forms newWorkReports={newWorkReports} />
-      <Button onClick={handleOnClick}>+</Button>
+      <Button onClick={handleOnClick} aria-label="Add new report">
+        +
+      </Button>
     </StyledSection>
   );
 }

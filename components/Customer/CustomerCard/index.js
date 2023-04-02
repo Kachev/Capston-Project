@@ -7,18 +7,17 @@ const CustomerSection = styled.section`
   border: 3px solid black;
   border-radius: 0.5rem;
   padding: 1rem;
-  margin-bottom:20px;
-  
+  margin-bottom: 20px;
 `;
-const H1 = styled.h1`
-    text-align:center;
-    margin-top:0;
-    margin-bottom:8px;
+const StyledHeadlineOne = styled.h1`
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 8px;
 `;
 export default function Customer() {
   return (
     <CustomerSection>
-      <H1>Kunde</H1>
+      <StyledHeadlineOne>Kunde</StyledHeadlineOne>
       <CustomerForm />
     </CustomerSection>
   );

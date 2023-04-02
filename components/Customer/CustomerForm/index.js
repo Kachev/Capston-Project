@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-const FormContainer = styled.fieldset`
+export const StyledFormFieldset = styled.fieldset`
   display: flex;
   flex-direction: column;
 `;
-const Label = styled.label`
+export const Label = styled.label`
   font-weight: bold;
   height: 10px;
   margin-bottom: 8px;
 `;
-const Input = styled.input`
+export const Input = styled.input`
   height: 30px;
   font-size: inherit;
   border: 2px solid black;
@@ -17,28 +17,31 @@ const Input = styled.input`
 `;
 export default function CustomerForm() {
   return (
-    <FormContainer>
-      <Label htmlFor="customer-first_name">Name</Label>
+    <StyledFormFieldset>
+      <Label htmlFor="customerFirstName">Name</Label>
       <Input
-        id="customer_first_name"
-        name="customer_first_name"
+        id="customerFirstName"
+        name="customerFirstName"
         type="text"
+        aria-label="Customer first name"
         required
       />
-      <Label htmlFor="customer_second_name">Familienname</Label>
+      <Label htmlFor="customerSecondName">Familienname</Label>
       <Input
-        id="customer_second_name"
-        name="customer_second_name"
+        id="customerSecondName"
+        name="customerSecondName"
         type="text"
+        aria-label="Customer second name"
         required
       />
-      <Label htmlFor="customer_address">Adresse</Label>
+      <Label htmlFor="customerAddress">Adresse</Label>
       <Input
-        id="customer_addresse"
-        name="customer_address"
+        id="customerAddress"
+        name="customerAddress"
         type="text"
+        aria-label="Customer address"
         required
       />
-    </FormContainer>
+    </StyledFormFieldset>
   );
 }

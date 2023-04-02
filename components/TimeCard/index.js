@@ -8,10 +8,8 @@ const WorkerContainer = styled.div`
   border-radius: 0.5rem;
   padding: 1rem;
   margin-bottom: 25px;
-  
 `;
-const H1 = styled.h1`
-
+const StyledHeadlineOne = styled.h1`
   text-align: center;
   margin-top: 0px;
   margin-bottom: 8px;
@@ -20,7 +18,7 @@ const H1 = styled.h1`
 export default function TimeCard() {
   return (
     <WorkerContainer>
-      <H1>Arbeitszeit</H1>
+      <StyledHeadlineOne>Arbeitszeit</StyledHeadlineOne>
       <TimeForm />
     </WorkerContainer>
   );

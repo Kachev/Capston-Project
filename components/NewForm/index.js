@@ -10,11 +10,11 @@ import styled from "styled-components";
 const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
 `;
 const Form = styled.form`
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 `;
 
@@ -30,7 +30,10 @@ export default function NewForm() {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     setNewWorkReports([data, ...newWorkReports]);
-    router.push("/ReportsList");
+    router.push({
+      pathname: "/ReportsList",
+      query: { newWorkReports: JSON.stringify([data, ...newWorkReports]) },
+    });
   }
 
   return (
@@ -40,7 +43,7 @@ export default function NewForm() {
         <Form onSubmit={handleAddNewWorkReport}>
           <TimeCard />
           <Customer />
-          <Button>Fertigstellen</Button>
+          <Button type="submit">Fertigstellen</Button>
         </Form>
       </StyledSection>
     </main>
