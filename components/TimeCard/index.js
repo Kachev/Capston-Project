@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import TimeForm from "../TimeForm";
 
-const WorkerContainer = styled.div`
+const StyledTimeContainer = styled.div`
   display: flex;
   flex-direction: column;
   border: 3px solid black;
@@ -17,9 +17,9 @@ const StyledHeadlineOne = styled.h1`
 
 export default function TimeCard() {
   return (
-    <WorkerContainer>
+    <StyledTimeContainer>
       <StyledHeadlineOne>Arbeitszeit</StyledHeadlineOne>
       <TimeForm />
-    </WorkerContainer>
+    </StyledTimeContainer>
   );
 }

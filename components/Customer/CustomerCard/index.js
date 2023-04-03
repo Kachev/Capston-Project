@@ -1,7 +1,7 @@
 import CustomerForm from "../CustomerForm";
 import styled from "styled-components";
 
-const CustomerSection = styled.section`
+const StyledCustomerSection = styled.section`
   display: flex;
   flex-direction: column;
   border: 3px solid black;
@@ -16,9 +16,9 @@ const StyledHeadlineOne = styled.h1`
 `;
 export default function Customer() {
   return (
-    <CustomerSection>
+    <StyledCustomerSection>
       <StyledHeadlineOne>Kunde</StyledHeadlineOne>
       <CustomerForm />
-    </CustomerSection>
+    </StyledCustomerSection>
   );
 }
