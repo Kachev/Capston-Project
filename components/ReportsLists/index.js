@@ -34,10 +34,11 @@ const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
 `;
+
 export default function Forms({ newWorkReports }) {
   return (
     <StyledSection>
-      <StyledUl role="list">
+      <StyledUl>
         {newWorkReports &&
           newWorkReports.map((workReport, index) => (
             <StyledLi key={index}>
@@ -76,6 +77,39 @@ export default function Forms({ newWorkReports }) {
                 <b>Adresse: </b>
                 {workReport.customerAddress}
               </StyledParagraph>
+              <StyledHeadlineThree>Materialien</StyledHeadlineThree>
+              {Object.entries(workReport)
+                .filter(([key]) => key.startsWith("materials-"))
+                .map(([key, value]) => {
+                  if (key.endsWith("-amount")) {
+                    const materialName = workReport[key.replace("-amount", "")];
+                    let materialUnit = "Stück";
+                    if (workReport[`${key.replace("-amount", "")}-m3`]) {
+                      materialUnit = "m³";
+                    } else if (workReport[`${key.replace("-amount", "")}-t`]) {
+                      materialUnit = "t";
+                    }
+                    return (
+                      <StyledParagraph key={key}>
+                        <b>{materialName}</b>
+                        <br />
+                        Menge: {value} {materialUnit}
+                      </StyledParagraph>
+                    );
+                  } else if (key.endsWith("-m3")) {
+                    return null;
+                  } else if (key.endsWith("-t")) {
+                    return null;
+                  } else {
+                    return null;
+                  }
+                })}
+              <StyledHeadlineThree>Maschinen</StyledHeadlineThree>
+              {Object.entries(workReport)
+                .filter(([key]) => key.startsWith("machinesAndDevices-"))
+                .map(([, value]) => (
+                  <StyledParagraph key={value}>{value}</StyledParagraph>
+                ))}
             </StyledLi>
           ))}
       </StyledUl>

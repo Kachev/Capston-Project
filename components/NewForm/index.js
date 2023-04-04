@@ -6,6 +6,7 @@ import useLocalStorageState from "use-local-storage-state";
 import { WorkReports } from "../../DB/data";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import MaterialsCard from "../MaterialsCard";
 
 const StyledSection = styled.section`
   display: flex;
@@ -24,6 +25,7 @@ export default function NewForm() {
     "workReport",
     { defaultValue: WorkReports }
   );
+  console.log(newWorkReports);
 
   function handleAddNewWorkReport(event) {
     event.preventDefault();
@@ -43,6 +45,7 @@ export default function NewForm() {
         <Form onSubmit={handleAddNewWorkReport}>
           <TimeCard />
           <Customer />
+          <MaterialsCard />
           <Button type="submit">Fertigstellen</Button>
         </Form>
       </StyledSection>
