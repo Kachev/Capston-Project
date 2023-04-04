@@ -1,9 +1,9 @@
-import Heading from "../components/Heading";
+import NewForm from "../components/NewForm";
 
 export default function Home() {
   return (
     <main>
-      <Heading>🐠 Tropical Fish Capstone Template 🐠</Heading>
+      <NewForm />
     </main>
   );
 }
