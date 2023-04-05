@@ -110,6 +110,33 @@ export default function Forms({ newWorkReports }) {
                 .map(([, value]) => (
                   <StyledParagraph key={value}>{value}</StyledParagraph>
                 ))}
+              <StyledHeadlineThree>Etsorgung</StyledHeadlineThree>
+              {Object.entries(workReport)
+                .filter(([key]) => key.startsWith("disposal-"))
+                .map(([key, value]) => {
+                  if (key.endsWith("-amount")) {
+                    const disposalName = workReport[key.replace("-amount", "")];
+                    let disposalUnit = "Stück";
+                    if (workReport[`${key.replace("-amount", "")}-m3`]) {
+                      disposalUnit = "m³";
+                    } else if (workReport[`${key.replace("-amount", "")}-t`]) {
+                      disposalUnit = "t";
+                    }
+                    return (
+                      <StyledParagraph key={key}>
+                        <b>{disposalName}</b>
+                        <br />
+                        Menge: {value} {disposalUnit}
+                      </StyledParagraph>
+                    );
+                  } else if (key.endsWith("-m3")) {
+                    return null;
+                  } else if (key.endsWith("-t")) {
+                    return null;
+                  } else {
+                    return null;
+                  }
+                })}
             </StyledLi>
           ))}
       </StyledUl>

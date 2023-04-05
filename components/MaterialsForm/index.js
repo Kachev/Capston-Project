@@ -2,23 +2,22 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Input } from "../Customer/CustomerForm";
 const StyledFormFieldset = styled.fieldset`
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
 `;
 const StyledMaterialsContainer = styled.div`
   display: grid;
-  
 `;
 const StyledMachinesContainer = styled.div`
   display: grid;
 `;
 const StyledCheckboxContainer = styled.div`
-  display:flex;
-  justify-content:space-around;
+  display: flex;
+  justify-content: space-around;
   flex-direction: row-reverse;
 `;
 export const StyledCheckboxLabel = styled.label`
-  padding-top:10px;
+  padding-top: 10px;
   font-weight: bold;
   height: 10px;
 `;
@@ -40,6 +39,7 @@ const Label = styled.label`
 export default function MaterialsForm() {
   const [newMachines, setNewMachines] = useState([{ machinesAndDevices: "" }]);
   const [newMaterials, setNewMaterials] = useState([{ materials: "" }]);
+  const [disposal, setDisposal] = useState([{ disposal: "" }]);
 
   function handleAddNewMachines() {
     setNewMachines([...newMachines, { machinesAndDevices: "" }]);
@@ -47,6 +47,9 @@ export default function MaterialsForm() {
 
   function handleAddNewMaterials() {
     setNewMaterials([...newMaterials, { materials: "", aLot: "", unit: [] }]);
+  }
+  function handleAddDisposal() {
+    setDisposal([...disposal, { disposal: "" }]);
   }
 
   function handleMaterialChange({ event, index }) {
@@ -94,18 +97,20 @@ export default function MaterialsForm() {
             <option value="Lava">Lava</option>
             <option value="Unterbau">Unterbau</option>
           </StyledSelect>
-          
-            <Input
-              id={`materials-${index}-amount`}
-              name={`materials-${index}-amount`}
-              type="number"
-              placeholder="Menge"
-              aria-label="a lot"
-              onChange={(event) => handleMaterialChange({ event, index })}
-              required
-            />
-            <StyledCheckboxContainer>
-            <StyledCheckboxLabel htmlFor={`materials-${index}-t`}>Tonnen</StyledCheckboxLabel>
+
+          <Input
+            id={`materials-${index}-amount`}
+            name={`materials-${index}-amount`}
+            type="number"
+            placeholder="Menge"
+            aria-label="a lot"
+            onChange={(event) => handleMaterialChange({ event, index })}
+            required
+          />
+          <StyledCheckboxContainer>
+            <StyledCheckboxLabel htmlFor={`materials-${index}-t`}>
+              Tonnen
+            </StyledCheckboxLabel>
             <Input
               id={`materials-${index}-t`}
               name={`materials-${index}-t`}
@@ -114,7 +119,9 @@ export default function MaterialsForm() {
               aria-label="Unit in ton"
               onChange={(event) => handleUnitChange({ event, index })}
             />
-            <StyledCheckboxLabel htmlFor={`materials-${index}-m3`}>m3</StyledCheckboxLabel>
+            <StyledCheckboxLabel htmlFor={`materials-${index}-m3`}>
+              m3
+            </StyledCheckboxLabel>
             <Input
               id={`materials-${index}-m3`}
               name={`materials-${index}-m3`}
@@ -153,6 +160,60 @@ export default function MaterialsForm() {
             </button>
           )}
         </StyledMachinesContainer>
+      ))}
+      {disposal.map((dropDown, index) => (
+        <StyledMaterialsContainer key={index}>
+          <Label htmlFor={`disposal-${index}`}>Etnsorgung</Label>
+          <StyledSelect
+            id={`disposal-${index}`}
+            name={`disposal-${index}`}
+            onChange={(event) => handleMaterialChange({ event, index })}
+          >
+            <option value="Grüngut">Grüngud</option>
+            <option value="Bauschut">Bauschut</option>
+            <option value="Oberboden">Oberboden</option>
+          </StyledSelect>
+
+          <Input
+            id={`disposal-${index}-amount`}
+            name={`disposal-${index}-amount`}
+            type="number"
+            placeholder="Menge"
+            aria-label="a lot"
+            onChange={(event) => handleMaterialChange({ event, index })}
+            required
+          />
+          <StyledCheckboxContainer>
+            <StyledCheckboxLabel htmlFor={`disposal-${index}-t`}>
+              Tonnen
+            </StyledCheckboxLabel>
+            <Input
+              id={`disposal-${index}-t`}
+              name={`disposal-${index}-t`}
+              type="checkbox"
+              value="t"
+              aria-label="Unit in ton"
+              onChange={(event) => handleUnitChange({ event, index })}
+            />
+            <StyledCheckboxLabel htmlFor={`disposal-${index}-m3`}>
+              m3
+            </StyledCheckboxLabel>
+            <Input
+              id={`mdisposal-${index}-m3`}
+              name={`disposal-${index}-m3`}
+              type="checkbox"
+              value="m3"
+              aria-label="Unit in cubic"
+              onChange={(event) => handleUnitChange({ event, index })}
+            />
+          </StyledCheckboxContainer>
+
+          {disposal.length - 1 === index && (
+            <button type="button" onClick={handleAddDisposal}>
+              <span>+</span>
+            </button>
+          )}
+        </StyledMaterialsContainer>
       ))}
     </StyledFormFieldset>
   );
