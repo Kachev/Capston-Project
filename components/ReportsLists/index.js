@@ -110,7 +110,7 @@ export default function Forms({ newWorkReports }) {
                 .map(([, value]) => (
                   <StyledParagraph key={value}>{value}</StyledParagraph>
                 ))}
-              <StyledHeadlineThree>Etsorgung</StyledHeadlineThree>
+              <StyledHeadlineThree>Entsorgung</StyledHeadlineThree>
               {Object.entries(workReport)
                 .filter(([key]) => key.startsWith("disposal-"))
                 .map(([key, value]) => {
@@ -137,9 +137,27 @@ export default function Forms({ newWorkReports }) {
                     return null;
                   }
                 })}
+              <StyledHeadlineThree>Pflanzen</StyledHeadlineThree>
+              {Object.entries(workReport)
+                .filter(([key]) => key.startsWith("plant-"))
+                .map(([key, value]) => {
+                  if (key.endsWith("-amount")) {
+                    const plantName = workReport[key.replace("-amount", "")];
+                    return (
+                      <StyledParagraph key={key}>
+                        <b>{plantName}</b>
+                        <br />
+                        Menge: {value}
+                      </StyledParagraph>
+                    );
+                  }
+                })}
             </StyledLi>
           ))}
       </StyledUl>
     </StyledSection>
   );
+}
+{
+  /* {workReport[`plant-0`]} */
 }

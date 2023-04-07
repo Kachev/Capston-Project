@@ -8,6 +8,7 @@ const CustomerSection = styled.section`
   border-radius: 0.5rem;
   padding: 1rem;
   margin-bottom: 20px;
+  min-width:395px;
 `;
 export const StyledHeadlineOne = styled.h1`
   text-align: center;

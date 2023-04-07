@@ -4,12 +4,19 @@ import { Input } from "../Customer/CustomerForm";
 const StyledFormFieldset = styled.fieldset`
   display: flex;
   flex-direction: column;
+  min-width:345px;
+`;
+const StyledPlantContainer = styled.div`
+  display: grid;
+  margin-bottom: 10px;
 `;
 const StyledMaterialsContainer = styled.div`
   display: grid;
+  margin-bottom: 10px;
 `;
 const StyledMachinesContainer = styled.div`
   display: grid;
+  margin-bottom: 10px;
 `;
 const StyledCheckboxContainer = styled.div`
   display: flex;
@@ -39,7 +46,8 @@ const Label = styled.label`
 export default function MaterialsForm() {
   const [newMachines, setNewMachines] = useState([{ machinesAndDevices: "" }]);
   const [newMaterials, setNewMaterials] = useState([{ materials: "" }]);
-  const [disposal, setDisposal] = useState([{ disposal: "" }]);
+  const [newDisposal, setNewDisposal] = useState([{ disposal: "" }]);
+  const [newPlant, setNewPlant] = useState([{ plant: "" }]);
 
   function handleAddNewMachines() {
     setNewMachines([...newMachines, { machinesAndDevices: "" }]);
@@ -49,13 +57,22 @@ export default function MaterialsForm() {
     setNewMaterials([...newMaterials, { materials: "", aLot: "", unit: [] }]);
   }
   function handleAddDisposal() {
-    setDisposal([...disposal, { disposal: "" }]);
+    setNewDisposal([...newDisposal, { disposal: "" }]);
+  }
+  function handleAddPlant() {
+    setNewPlant([...newPlant, { plant: "" }]);
+  }
+  function handlePlantChange(event, index) {
+    const { value } = event.target;
+    const list = [...newPlant];
+    list[index] = value;
+    setNewPlant(list);
   }
 
   function handleMaterialChange({ event, index }) {
-    const { name, value } = event.target;
+    const { value } = event.target;
     const list = [...newMaterials];
-    list[index][name] = value;
+    list[index] = { name: value };
     setNewMaterials(list);
   }
 
@@ -75,16 +92,8 @@ export default function MaterialsForm() {
     setNewMaterials(list);
   }
 
-  /* function handleSubmit(event) {
-    event.preventDefault();
-
-    // Hier kannst du die ausgewählten Maschinen, Geräte und Materialien speichern
-    console.log(newMachines);
-    console.log(newMaterials);
-  } */
-
   return (
-    <StyledFormFieldset /* onSubmit={handleSubmit} */>
+    <StyledFormFieldset>
       {newMaterials.map((dropDown, index) => (
         <StyledMaterialsContainer key={index}>
           <Label htmlFor={`materials-${index}`}>Materialien</Label>
@@ -161,15 +170,15 @@ export default function MaterialsForm() {
           )}
         </StyledMachinesContainer>
       ))}
-      {disposal.map((dropDown, index) => (
+      {newDisposal.map((dropDown, index) => (
         <StyledMaterialsContainer key={index}>
-          <Label htmlFor={`disposal-${index}`}>Etnsorgung</Label>
+          <Label htmlFor={`disposal-${index}`}>Entsorgung</Label>
           <StyledSelect
             id={`disposal-${index}`}
             name={`disposal-${index}`}
             onChange={(event) => handleMaterialChange({ event, index })}
           >
-            <option value="Grüngut">Grüngud</option>
+            <option value="Grüngut">Grüngut</option>
             <option value="Bauschut">Bauschut</option>
             <option value="Oberboden">Oberboden</option>
           </StyledSelect>
@@ -208,12 +217,38 @@ export default function MaterialsForm() {
             />
           </StyledCheckboxContainer>
 
-          {disposal.length - 1 === index && (
+          {newDisposal.length - 1 === index && (
             <button type="button" onClick={handleAddDisposal}>
               <span>+</span>
             </button>
           )}
         </StyledMaterialsContainer>
+      ))}
+      {newPlant.map((value, index) => (
+        <StyledPlantContainer key={index}>
+          <Label htmlFor={`plant-${index}`}>Pflanzen</Label>
+          <Input
+            id={`plant-${index}`}
+            name={`plant-${index}`}
+            value={value.name}
+            type="text"
+            onChange={(event) => handlePlantChange(event, index)}
+          />
+          <label htmlFor={`plant-${index}-amount`}>Menge</label>
+          <Input
+            id={`plant-${index}-amount`}
+            name={`plant-${index}-amount`}
+            type="number"
+            placeholder="Menge"
+            aria-label="a lot"
+            onChange={(event) => handlePlantChange(event, index)}
+          />
+          {newPlant.length - 1 === index && (
+            <button type="button" onClick={handleAddPlant}>
+              <span>+</span>
+            </button>
+          )}
+        </StyledPlantContainer>
       ))}
     </StyledFormFieldset>
   );
