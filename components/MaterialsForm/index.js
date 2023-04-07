@@ -100,7 +100,7 @@ export default function MaterialsForm() {
           <StyledSelect
             id={`materials-${index}`}
             name={`materials-${index}`}
-            onChange={(event) => handleMaterialChange({ event, index })}
+            onChange={(event) => handleMaterialChange( event, index )}
           >
             <option value="Erde">Erde</option>
             <option value="Lava">Lava</option>
@@ -113,7 +113,7 @@ export default function MaterialsForm() {
             type="number"
             placeholder="Menge"
             aria-label="a lot"
-            onChange={(event) => handleMaterialChange({ event, index })}
+            onChange={(event) => handleMaterialChange( event, index )}
             required
           />
           <StyledCheckboxContainer>
@@ -126,7 +126,7 @@ export default function MaterialsForm() {
               type="checkbox"
               value="t"
               aria-label="Unit in ton"
-              onChange={(event) => handleUnitChange({ event, index })}
+              onChange={(event) => handleUnitChange( event, index)}
             />
             <StyledCheckboxLabel htmlFor={`materials-${index}-m3`}>
               m3
@@ -137,7 +137,7 @@ export default function MaterialsForm() {
               type="checkbox"
               value="m3"
               aria-label="Unit in cubic"
-              onChange={(event) => handleUnitChange({ event, index })}
+              onChange={(event) => handleUnitChange(event, index )}
             />
           </StyledCheckboxContainer>
 
@@ -157,7 +157,7 @@ export default function MaterialsForm() {
             id={`machinesAndDevices-${index}`}
             name={`machinesAndDevices-${index}`}
             required
-            onChange={(event) => handleMaterialChange({ event, index })}
+            onChange={(event) => handleMaterialChange( event, index )}
           >
             <option value="Rasenmäher">Rasenmäher</option>
             <option value="Laubbläser">Laubbläser</option>
@@ -176,7 +176,7 @@ export default function MaterialsForm() {
           <StyledSelect
             id={`disposal-${index}`}
             name={`disposal-${index}`}
-            onChange={(event) => handleMaterialChange({ event, index })}
+            onChange={(event) => handleMaterialChange(event, index )}
           >
             <option value="Grüngut">Grüngut</option>
             <option value="Bauschut">Bauschut</option>
@@ -189,7 +189,7 @@ export default function MaterialsForm() {
             type="number"
             placeholder="Menge"
             aria-label="a lot"
-            onChange={(event) => handleMaterialChange({ event, index })}
+            onChange={(event) => handleMaterialChange( event, index )}
             required
           />
           <StyledCheckboxContainer>
@@ -202,7 +202,7 @@ export default function MaterialsForm() {
               type="checkbox"
               value="t"
               aria-label="Unit in ton"
-              onChange={(event) => handleUnitChange({ event, index })}
+              onChange={(event) => handleUnitChange( event, index )}
             />
             <StyledCheckboxLabel htmlFor={`disposal-${index}-m3`}>
               m3
@@ -213,7 +213,7 @@ export default function MaterialsForm() {
               type="checkbox"
               value="m3"
               aria-label="Unit in cubic"
-              onChange={(event) => handleUnitChange({ event, index })}
+              onChange={(event) => handleUnitChange( event, index )}
             />
           </StyledCheckboxContainer>
 
