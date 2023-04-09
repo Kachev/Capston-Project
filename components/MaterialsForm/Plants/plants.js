@@ -2,8 +2,21 @@ import styled from "styled-components";
 import { useState } from "react";
 import { Label, Input } from "../../Customer/CustomerForm/customerForm";
 const StyledPlantContainer = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 10px;
+`;
+const StyledArticle = styled.article``;
+export const StyledAddButton = styled.button`
+  width: 40px;
+  height: 30px;
+  background-color: #0a0a23;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+  align-self: center;
+  margin-top: 10px;
 `;
 export default function Plants() {
   const [newPlant, setNewPlant] = useState([{ id: 1, plant: "" }]);
@@ -24,7 +37,7 @@ export default function Plants() {
     setNewPlant(list);
   }
   return (
-    <div>
+    <StyledArticle>
       {newPlant.map((plant, index) => (
         <StyledPlantContainer key={plant.id}>
           <Label htmlFor={`plant-${index}`}>Pflanzen</Label>
@@ -44,12 +57,12 @@ export default function Plants() {
             onChange={(event) => handlePlantChange(event, index)}
           />
           {newPlant.length - 1 === index && (
-            <button type="button" onClick={handleAddPlant}>
+            <StyledAddButton type="button" onClick={handleAddPlant}>
               <span>+</span>
-            </button>
+            </StyledAddButton>
           )}
         </StyledPlantContainer>
       ))}
-    </div>
+    </StyledArticle>
   );
 }

@@ -4,12 +4,14 @@ import {
   StyledCheckboxContainer,
   StyledCheckboxLabel,
 } from "../materialsForm";
+import { StyledAddButton } from "../Plants/plants";
 import { Input } from "../../Customer/CustomerForm/customerForm";
 import { useState } from "react";
 import styled from "styled-components";
 
 const StyledSection = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 10px;
 `;
 export default function Disposal() {
@@ -85,9 +87,9 @@ export default function Disposal() {
           </StyledCheckboxContainer>
 
           {newDisposal.length - 1 === index && (
-            <button type="button" onClick={handleAddDisposal}>
+            <StyledAddButton type="button" onClick={handleAddDisposal}>
               <span>+</span>
-            </button>
+            </StyledAddButton>
           )}
         </StyledSection>
       ))}

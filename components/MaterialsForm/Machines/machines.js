@@ -1,10 +1,11 @@
 import styled from "styled-components";
-
+import { StyledAddButton } from "../Plants/plants";
 import { StyledSelect, Label } from "../materialsForm";
 import { useState } from "react";
 
 const StyledMachinesContainer = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 10px;
 `;
 
@@ -41,9 +42,9 @@ export default function Machines() {
             <option value="Kompaktbagger">Kompaktbagger</option>
           </StyledSelect>
           {newMachines.length - 1 === index && (
-            <button type="button" onClick={handleAddNewMachines}>
+            <StyledAddButton type="button" onClick={handleAddNewMachines}>
               <span>+</span>
-            </button>
+            </StyledAddButton>
           )}
         </StyledMachinesContainer>
       ))}

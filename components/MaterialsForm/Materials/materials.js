@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { StyledAddButton } from "../Plants/plants";
 import {
   Label,
   StyledSelect,
@@ -8,7 +9,8 @@ import {
 import { Input } from "../../Customer/CustomerForm/customerForm";
 import { useState } from "react";
 const StyledMaterialsContainer = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 10px;
 `;
 export default function Materials() {
@@ -85,9 +87,9 @@ export default function Materials() {
           </StyledCheckboxContainer>
 
           {newMaterials.length - 1 === index && (
-            <button type="button" onClick={handleAddNewMaterials}>
+            <StyledAddButton type="button" onClick={handleAddNewMaterials}>
               <span>+</span>
-            </button>
+            </StyledAddButton>
           )}
         </StyledMaterialsContainer>
       ))}

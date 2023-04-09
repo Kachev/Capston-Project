@@ -6,8 +6,13 @@ import Materials from "./Materials/materials";
 import Plants from "./Plants/plants";
 const StyledFormFieldset = styled.fieldset`
   display: flex;
-  flex-direction: column;
-  min-width: 345px;
+  justify-content: space-between;
+  gap: 0.5rem;
+  /* min-width: 345px; */
+  
+`;
+const StyledContainer = styled.div`
+
 `;
 
 export const StyledCheckboxContainer = styled.div`
@@ -38,10 +43,14 @@ export const Label = styled.label`
 export default function MaterialsForm() {
   return (
     <StyledFormFieldset>
-      <Machines />
-      <Materials />
-      <Disposal />
-      <Plants />
+      <StyledContainer>
+        <Materials />
+        <Machines />
+      </StyledContainer>
+      <StyledContainer>
+        <Disposal />
+        <Plants />
+      </StyledContainer>
     </StyledFormFieldset>
   );
 }
