@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { Label, Input, StyledFormFieldset } from "../Customer/CustomerForm";
+import {
+  Label,
+  Input,
+  StyledFormFieldset,
+} from "../Customer/CustomerForm/customerForm";
 
 const StyledTimeContainer = styled.div`
   margin-top: 10px;

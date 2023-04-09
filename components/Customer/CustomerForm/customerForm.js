@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StyledFormFieldset = styled.fieldset`
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
 `;
 export const Label = styled.label`
   font-weight: bold;

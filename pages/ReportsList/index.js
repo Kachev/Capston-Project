@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "../../components/Button";
-import Forms from "../../components/ReportsLists";
+import Forms from "../../components/ReportsLists/reportsList";
 import { useRouter } from "next/router";
 
 const StyledSection = styled.section`

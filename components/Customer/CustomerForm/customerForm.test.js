@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import CustomerForm from ".";
+import CustomerForm from "./customerForm";
 
 test("should render a form with required fields and their associated labels", () => {
   render(<CustomerForm />);

@@ -2,9 +2,9 @@ export const WorkReports = [
   {
     date: "2023-04-06",
     workerName: "Fritz",
-    from: "12:21",
-    to: "12:12",
-    pause: "12:12",
+    from: "08:00",
+    to: "17:00",
+    pause: "00:30",
     customerFirstName: "Andreas",
     customerSecondName: "Bergstein",
     customerAddress: "Hamburg",

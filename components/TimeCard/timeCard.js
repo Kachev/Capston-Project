@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import TimeForm from "../TimeForm";
+import TimeForm from "../TimeForm/timeForm";
 
 const WorkerContainer = styled.div`
   display: flex;

@@ -1,4 +1,4 @@
-import NewForm from "../components/NewForm";
+import NewForm from "../components/NewForm/newForm";
 
 export default function Home() {
   return (

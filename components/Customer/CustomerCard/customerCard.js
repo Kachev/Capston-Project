@@ -1,14 +1,14 @@
-import CustomerForm from "../CustomerForm";
+import CustomerForm from "../CustomerForm/customerForm";
 import styled from "styled-components";
 
 const CustomerSection = styled.section`
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  flex-direction: column;
   border: 3px solid black;
   border-radius: 0.5rem;
   padding: 1rem;
   margin-bottom: 20px;
-  min-width:395px;
+  min-width: 395px;
 `;
 export const StyledHeadlineOne = styled.h1`
   text-align: center;

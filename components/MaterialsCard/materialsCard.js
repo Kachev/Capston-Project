@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import MaterialsForm from "../MaterialsForm"
-import { StyledHeadlineOne } from "../Customer/CustomerCard";
+import MaterialsForm from "../MaterialsForm/materialsForm";
+import { StyledHeadlineOne } from "../Customer/CustomerCard/customerCard";
 
 const StyledMaterialsSection = styled.section`
   border: 3px solid black;
   border-radius: 0.5rem;
-  margin-bottom:20px;
-  padding:20px;
+  margin-bottom: 20px;
+  padding: 20px;
 `;
 
 export default function MaterialsCard() {

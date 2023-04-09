@@ -1,12 +1,12 @@
 import Heading from "../Heading";
-import TimeCard from "../TimeCard";
-import Customer from "../Customer/CustomerCard";
+import TimeCard from "../TimeCard/timeCard";
+import Customer from "../Customer/CustomerCard/customerCard";
 import Button from "../Button";
 import useLocalStorageState from "use-local-storage-state";
 import { WorkReports } from "../../DB/data";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import MaterialsCard from "../MaterialsCard";
+import MaterialsCard from "../MaterialsCard/materialsCard";
 
 const StyledSection = styled.section`
   display: flex;
@@ -22,7 +22,7 @@ const Form = styled.form`
 export default function NewForm() {
   const router = useRouter();
   const [newWorkReports, setNewWorkReports] = useLocalStorageState(
-    "workReport",
+    "WorkReports",
     { defaultValue: WorkReports }
   );
   console.log(newWorkReports);
