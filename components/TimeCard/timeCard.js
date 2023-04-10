@@ -8,6 +8,7 @@ const WorkerContainer = styled.div`
   border-radius: 0.5rem;
   padding: 1rem;
   margin-bottom: 25px;
+  min-width: 350px;
 `;
 const StyledHeadlineOne = styled.h1`
   text-align: center;

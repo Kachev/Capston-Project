@@ -6,13 +6,10 @@ import Materials from "./Materials/materials";
 import Plants from "./Plants/plants";
 const StyledFormFieldset = styled.fieldset`
   display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-  /* min-width: 345px; */
-  
+  justify-content: space-around;
 `;
 const StyledContainer = styled.div`
-
+  max-width: 125px;
 `;
 
 export const StyledCheckboxContainer = styled.div`
@@ -21,9 +18,8 @@ export const StyledCheckboxContainer = styled.div`
   flex-direction: row-reverse;
 `;
 export const StyledCheckboxLabel = styled.label`
-  padding-top: 10px;
   font-weight: bold;
-  height: 10px;
+  align-self: center;
 `;
 
 export const StyledSelect = styled.select`

@@ -3,7 +3,7 @@ import { StyledAddButton } from "../Plants/plants";
 import { StyledSelect, Label } from "../materialsForm";
 import { useState } from "react";
 
-const StyledMachinesContainer = styled.div`
+export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
@@ -24,9 +24,11 @@ export default function Machines() {
   }
 
   return (
-    <>
+    <article>
       {newMachines.map((dropDown, index) => (
-        <StyledMachinesContainer key={index}>
+        <StyledContainer
+          key={`${index}-${newMachines[index].machinesAndDevices}`}
+        >
           <Label htmlFor={`machinesAndDevices-${index}`}>
             Maschinen und Geräte
           </Label>
@@ -46,8 +48,8 @@ export default function Machines() {
               <span>+</span>
             </StyledAddButton>
           )}
-        </StyledMachinesContainer>
+        </StyledContainer>
       ))}
-    </>
+    </article>
   );
 }

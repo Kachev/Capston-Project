@@ -6,7 +6,6 @@ const StyledPlantContainer = styled.div`
   flex-direction: column;
   margin-bottom: 10px;
 `;
-const StyledArticle = styled.article``;
 export const StyledAddButton = styled.button`
   width: 40px;
   height: 30px;
@@ -22,7 +21,10 @@ export default function Plants() {
   const [newPlant, setNewPlant] = useState([{ id: 1, plant: "" }]);
 
   function handleAddPlant() {
-    setNewPlant([...newPlant, { id: newPlant.length + 1, plant: "" }]);
+    setNewPlant([
+      ...newPlant,
+      { id: newPlant.length + 1, plant: "", amount: "" },
+    ]);
   }
   function handlePlantChange(event, index) {
     const { value } = event.target;
@@ -30,14 +32,14 @@ export default function Plants() {
     list[index] = { ...list[index], plant: value };
     setNewPlant(list);
   }
-  function handlePlantAmountChange({ event, index }) {
+  function handlePlantAmountChange(event, index) {
     const { value } = event.target;
     const list = [...newPlant];
     list[index] = { ...list[index], amount: value };
     setNewPlant(list);
   }
   return (
-    <StyledArticle>
+    <article>
       {newPlant.map((plant, index) => (
         <StyledPlantContainer key={plant.id}>
           <Label htmlFor={`plant-${index}`}>Pflanzen</Label>
@@ -47,14 +49,14 @@ export default function Plants() {
             type="text"
             onChange={(event) => handlePlantChange(event, index)}
           />
-          <label htmlFor={`plant-${index}-amount`}>Menge</label>
+          <Label htmlFor={`plant-${index}-amount`}>Menge</Label>
           <Input
             id={`plant-${index}-amount`}
             name={`plant-${index}-amount`}
             type="number"
             placeholder="Menge"
             aria-label="a lot"
-            onChange={(event) => handlePlantChange(event, index)}
+            onChange={(event) => handlePlantAmountChange(event, index)}
           />
           {newPlant.length - 1 === index && (
             <StyledAddButton type="button" onClick={handleAddPlant}>
@@ -63,6 +65,6 @@ export default function Plants() {
           )}
         </StyledPlantContainer>
       ))}
-    </StyledArticle>
+    </article>
   );
 }

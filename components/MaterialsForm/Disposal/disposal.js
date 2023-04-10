@@ -7,13 +7,8 @@ import {
 import { StyledAddButton } from "../Plants/plants";
 import { Input } from "../../Customer/CustomerForm/customerForm";
 import { useState } from "react";
-import styled from "styled-components";
+import { StyledContainer } from "../Machines/machines";
 
-const StyledSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-`;
 export default function Disposal() {
   const [newDisposal, setNewDisposal] = useState([{ id: 1, disposal: "" }]);
   function handleAddDisposal() {
@@ -38,9 +33,9 @@ export default function Disposal() {
   }
 
   return (
-    <div>
+    <article>
       {newDisposal.map((dropDown, index) => (
-        <StyledSection key={dropDown.id}>
+        <StyledContainer key={dropDown.id}>
           <Label htmlFor={`disposal-${index}`}>Entsorgung</Label>
           <StyledSelect
             id={`disposal-${index}`}
@@ -74,7 +69,7 @@ export default function Disposal() {
               onChange={(event) => handleUnitChange({ event, index })}
             />
             <StyledCheckboxLabel htmlFor={`disposal-${index}-m3`}>
-              m3
+              m³
             </StyledCheckboxLabel>
             <Input
               id={`mdisposal-${index}-m3`}
@@ -91,8 +86,8 @@ export default function Disposal() {
               <span>+</span>
             </StyledAddButton>
           )}
-        </StyledSection>
+        </StyledContainer>
       ))}
-    </div>
+    </article>
   );
 }

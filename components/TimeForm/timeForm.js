@@ -4,9 +4,15 @@ import {
   Input,
   StyledFormFieldset,
 } from "../Customer/CustomerForm/customerForm";
+const StyledContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
 
 const StyledTimeContainer = styled.div`
   margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
 `;
 export default function TimeForm() {
   return (
@@ -22,8 +28,12 @@ export default function TimeForm() {
         aria-label="Worker name"
         required
       />
-      <StyledTimeContainer>
+      <StyledContainer>
         <Label htmlFor="workerFrom">Von</Label>
+        <Label htmlFor="workerTo">Bis</Label>
+        <Label htmlFor="workerPause">Pause</Label>
+      </StyledContainer>
+      <StyledTimeContainer>
         <Input
           id="workerFrom"
           type="time"
@@ -31,9 +41,7 @@ export default function TimeForm() {
           aria-label="From"
           required
         />
-        <Label htmlFor="workerTo">Bis</Label>
         <Input id="workerTo" type="time" name="to" aria-label="To" required />
-        <Label htmlFor="workerPause">Pause</Label>
         <Input
           id="workerPause"
           type="time"

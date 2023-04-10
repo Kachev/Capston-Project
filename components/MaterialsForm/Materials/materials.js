@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { StyledContainer } from "../Machines/machines";
 import { StyledAddButton } from "../Plants/plants";
 import {
   Label,
@@ -8,11 +8,7 @@ import {
 } from "../materialsForm";
 import { Input } from "../../Customer/CustomerForm/customerForm";
 import { useState } from "react";
-const StyledMaterialsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-`;
+
 export default function Materials() {
   const [newMaterials, setNewMaterials] = useState([{ id: 1, materials: "" }]);
   function handleAddNewMaterials() {
@@ -24,7 +20,7 @@ export default function Materials() {
   function handleMaterialChange({ event, index }) {
     const { value } = event.target;
     const list = [...newMaterials];
-    list[index] = { ...list[index], name: value };
+    list[index] = { ...list[index], materials: value };
     setNewMaterials(list);
   }
 
@@ -37,9 +33,9 @@ export default function Materials() {
     setNewMaterials(list);
   }
   return (
-    <div>
+    <article>
       {newMaterials.map((dropDown, index) => (
-        <StyledMaterialsContainer key={dropDown.id}>
+        <StyledContainer key={dropDown.id}>
           <Label htmlFor={`materials-${index}`}>Materialien</Label>
           <StyledSelect
             id={`materials-${index}`}
@@ -74,7 +70,7 @@ export default function Materials() {
               onChange={(event) => handleUnitChange({ event, index })}
             />
             <StyledCheckboxLabel htmlFor={`materials-${index}-m3`}>
-              m3
+              m³
             </StyledCheckboxLabel>
             <Input
               id={`materials-${index}-m3`}
@@ -91,8 +87,8 @@ export default function Materials() {
               <span>+</span>
             </StyledAddButton>
           )}
-        </StyledMaterialsContainer>
+        </StyledContainer>
       ))}
-    </div>
+    </article>
   );
 }

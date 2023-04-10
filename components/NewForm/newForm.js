@@ -17,6 +17,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 325px;
 `;
 
 export default function NewForm() {

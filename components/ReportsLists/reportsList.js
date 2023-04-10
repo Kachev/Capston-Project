@@ -26,6 +26,11 @@ const StyledLi = styled.li`
   padding: 1rem;
   display: flex;
   gap: 1rem;
+  min-width: 325px;
+`;
+const StyledUl = styled.ul`
+  display: flex;
+  flex-direction: column;
 `;
 const StyledSection = styled.section`
   display: flex;
@@ -42,7 +47,7 @@ const StyledContainer = styled.div`
 
 export default function Forms({ newWorkReports }) {
   return (
-    <ul>
+    <StyledUl>
       {newWorkReports &&
         newWorkReports.map((workReport, index) => (
           <StyledLi key={index}>
@@ -178,6 +183,6 @@ export default function Forms({ newWorkReports }) {
             </StyledContainer>
           </StyledLi>
         ))}
-    </ul>
+    </StyledUl>
   );
 }
