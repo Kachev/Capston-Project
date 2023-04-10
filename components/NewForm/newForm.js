@@ -26,7 +26,6 @@ export default function NewForm() {
     "WorkReports",
     { defaultValue: WorkReports }
   );
-  console.log(newWorkReports);
 
   function handleAddNewWorkReport(event) {
     event.preventDefault();
