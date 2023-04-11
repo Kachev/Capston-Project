@@ -3,11 +3,11 @@ import {
   StyledSelect,
   StyledCheckboxContainer,
   StyledCheckboxLabel,
-} from "../materialsForm";
-import { StyledAddButton } from "../Plants/plants";
-import { Input } from "../../Customer/CustomerForm/customerForm";
+} from "..";
+import { StyledAddButton } from "../Plants";
+import { Input } from "../../Customer/CustomerForm";
 import { useState } from "react";
-import { StyledContainer } from "../Machines/machines";
+import { StyledContainer } from "../Machines";
 
 export default function Disposal() {
   const [newDisposal, setNewDisposal] = useState([{ id: 1, disposal: "" }]);

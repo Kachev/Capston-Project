@@ -1,4 +1,4 @@
-import CustomerForm from "../CustomerForm/customerForm";
+import CustomerForm from "../CustomerForm";
 import styled from "styled-components";
 
 const CustomerSection = styled.section`

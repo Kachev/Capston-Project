@@ -1,9 +1,5 @@
 import styled from "styled-components";
-import {
-  Label,
-  Input,
-  StyledFormFieldset,
-} from "../Customer/CustomerForm/customerForm";
+import { Label, Input, StyledFormFieldset } from "../Customer/CustomerForm";
 const StyledContainer = styled.div`
   display: flex;
   justify-content: space-around;

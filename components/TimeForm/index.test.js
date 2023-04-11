@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import TimeForm from "../TimeForm/timeForm";
+import TimeForm from ".";
 
 describe("TimeForm", () => {
   test("should render a form with required fields and their associated labels", () => {

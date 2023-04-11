@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Forms from "../../components/ReportsLists/reportsList";
+import Forms from "../../components/ReportsLists";
 import { useRouter } from "next/router";
 
 const StyledSection = styled.section`

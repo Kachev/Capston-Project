@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { Label, Input } from "../../Customer/CustomerForm/customerForm";
+import { Label, Input } from "../../Customer/CustomerForm";
 const StyledPlantContainer = styled.div`
   display: flex;
   flex-direction: column;

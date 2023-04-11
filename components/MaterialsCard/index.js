@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import MaterialsForm from "../MaterialsForm/materialsForm";
-import { StyledHeadlineOne } from "../Customer/CustomerCard/customerCard";
+import MaterialsForm from "../MaterialsForm";
+import { StyledHeadlineOne } from "../Customer/CustomerCard";
 
 const StyledMaterialsSection = styled.section`
   border: 3px solid black;

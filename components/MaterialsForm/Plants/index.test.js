@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Plants from "../Plants/plants";
+import Plants from ".";
 
 test("renders plant inputs", async () => {
   render(<Plants />);

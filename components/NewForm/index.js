@@ -1,12 +1,12 @@
 import Heading from "../Heading";
 import TimeCard from "../TimeCard/timeCard";
-import Customer from "../Customer/CustomerCard/customerCard";
+import Customer from "../Customer/CustomerCard";
 import Button from "../Button";
 import useLocalStorageState from "use-local-storage-state";
 import { WorkReports } from "../../DB/data";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import MaterialsCard from "../MaterialsCard/materialsCard";
+import MaterialsCard from "../MaterialsCard";
 
 const StyledSection = styled.section`
   display: flex;

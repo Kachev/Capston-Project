@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { StyledAddButton } from "../Plants/plants";
-import { StyledSelect, Label } from "../materialsForm";
+import { StyledAddButton } from "../Plants";
+import { StyledSelect, Label } from "..";
 import { useState } from "react";
 
 export const StyledContainer = styled.div`

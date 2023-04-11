@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Materials from "../Materials/materials";
+import Materials from ".";
 
 test("renders materials dropdown", async () => {
   render(<Materials />);

@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { Input } from "../Customer/CustomerForm/customerForm";
-import Disposal from "../MaterialsForm/Disposal/disposal";
-import Machines from "./Machines/machines";
-import Materials from "./Materials/materials";
-import Plants from "./Plants/plants";
+import Disposal from "./Disposal";
+import Machines from "./Machines";
+import Materials from "./Materials";
+import Plants from "./Plants";
 const StyledFormFieldset = styled.fieldset`
   display: flex;
   justify-content: space-around;

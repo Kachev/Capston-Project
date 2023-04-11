@@ -1,12 +1,12 @@
-import { StyledContainer } from "../Machines/machines";
-import { StyledAddButton } from "../Plants/plants";
+import { StyledContainer } from "../Machines";
+import { StyledAddButton } from "../Plants";
 import {
   Label,
   StyledSelect,
   StyledCheckboxContainer,
   StyledCheckboxLabel,
-} from "../materialsForm";
-import { Input } from "../../Customer/CustomerForm/customerForm";
+} from "..";
+import { Input } from "../../Customer/CustomerForm";
 import { useState } from "react";
 
 export default function Materials() {

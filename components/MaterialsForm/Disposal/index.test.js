@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Disposal from "../Disposal/disposal";
+import Disposal from ".";
 
 test("renders disposal dropdowns", async () => {
   render(<Disposal />);
