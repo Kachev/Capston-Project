@@ -32,9 +32,10 @@ export default function TimeForm() {
       <StyledTimeContainer>
         <Input
           id="workerFrom"
-          type="time"
+          type="number"
           name="from"
           aria-label="From"
+          min="0"
           required
         />
         <Input id="workerTo" type="time" name="to" aria-label="To" required />

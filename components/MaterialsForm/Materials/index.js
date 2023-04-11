@@ -52,6 +52,7 @@ export default function Materials() {
             name={`materials-${index}-amount`}
             type="number"
             placeholder="Menge"
+            min="0"
             aria-label="a lot"
             onChange={(event) => handleMaterialChange({ event, index })}
             required
@@ -65,7 +66,6 @@ export default function Materials() {
               name={`materials-${index}-t`}
               type="checkbox"
               value="t"
-              minLength="0"
               aria-label="Unit in ton"
               onChange={(event) => handleUnitChange({ event, index })}
             />

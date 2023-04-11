@@ -53,6 +53,7 @@ export default function Disposal() {
             type="number"
             placeholder="Menge"
             aria-label="a lot"
+            min="0"
             onChange={(event) => handleDisposalChange({ event, index })}
             required
           />
