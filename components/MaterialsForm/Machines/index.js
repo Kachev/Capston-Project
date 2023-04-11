@@ -11,6 +11,13 @@ export const StyledContainer = styled.div`
 
 export default function Machines() {
   const [newMachines, setNewMachines] = useState([{ machinesAndDevices: "" }]);
+  function handleDeleteMachines(index) {
+    const list = [...newMachines];
+    if (list.length > 1) {
+      list.splice(index, 1);
+    }
+    setNewMachines(list);
+  }
 
   function handleAddNewMachines() {
     setNewMachines([...newMachines, { machinesAndDevices: "" }]);
@@ -43,6 +50,9 @@ export default function Machines() {
             <option value="Laubbläser">Laubbläser</option>
             <option value="Kompaktbagger">Kompaktbagger</option>
           </StyledSelect>
+          <button type="button" onClick={() => handleDeleteMachines(index)}>
+            Delete
+          </button>
           {newMachines.length - 1 === index && (
             <StyledAddButton type="button" onClick={handleAddNewMachines}>
               <span>+</span>

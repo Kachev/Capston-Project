@@ -11,6 +11,14 @@ import { StyledContainer } from "../Machines";
 
 export default function Disposal() {
   const [newDisposal, setNewDisposal] = useState([{ id: 1, disposal: "" }]);
+
+  function handleDeleteDisposal(index) {
+    const list = [...newDisposal];
+    if (list.length > 1) {
+      list.splice(index, 1);
+    }
+    setNewDisposal(list);
+  }
   function handleAddDisposal() {
     setNewDisposal([
       ...newDisposal,
@@ -81,6 +89,9 @@ export default function Disposal() {
               onChange={(event) => handleUnitChange({ event, index })}
             />
           </StyledCheckboxContainer>
+          <button type="button" onClick={() => handleDeleteDisposal(index)}>
+            Delete
+          </button>
 
           {newDisposal.length - 1 === index && (
             <StyledAddButton type="button" onClick={handleAddDisposal}>

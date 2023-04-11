@@ -19,7 +19,13 @@ export const StyledAddButton = styled.button`
 `;
 export default function Plants() {
   const [newPlant, setNewPlant] = useState([{ id: 1, plant: "" }]);
-
+  function handleDeletePlant(index) {
+    const list = [...newPlant];
+    if (list.length > 1) {
+      list.splice(index, 1);
+    }
+    setNewPlant(list);
+  }
   function handleAddPlant() {
     setNewPlant([
       ...newPlant,
@@ -58,6 +64,9 @@ export default function Plants() {
             aria-label="a lot"
             onChange={(event) => handlePlantAmountChange(event, index)}
           />
+          <button type="button" onClick={() => handleDeletePlant(index)}>
+            Delete
+          </button>
           {newPlant.length - 1 === index && (
             <StyledAddButton type="button" onClick={handleAddPlant}>
               <span>+</span>

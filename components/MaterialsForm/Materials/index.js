@@ -17,6 +17,14 @@ export default function Materials() {
       { id: newMaterials.length + 1, materials: "", aLot: "", unit: [] },
     ]);
   }
+  function handleDeleteMaterials(index) {
+    const list = [...newMaterials];
+    if (list.length > 1) {
+      list.splice(index, 1);
+    }
+    setNewMaterials(list);
+  }
+
   function handleMaterialChange({ event, index }) {
     const { value } = event.target;
     const list = [...newMaterials];
@@ -81,6 +89,9 @@ export default function Materials() {
               onChange={(event) => handleUnitChange({ event, index })}
             />
           </StyledCheckboxContainer>
+          <button type="button" onClick={() => handleDeleteMaterials(index)}>
+            Delete
+          </button>
 
           {newMaterials.length - 1 === index && (
             <StyledAddButton type="button" onClick={handleAddNewMaterials}>
