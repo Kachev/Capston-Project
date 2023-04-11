@@ -52,7 +52,7 @@ export default function Machines() {
           key={`${index}-${newMachines[index].machinesAndDevices}`}
         >
           <Label htmlFor={`machinesAndDevices-${index}`}>
-            Maschinen und Geräte
+            <span>Maschinen</span>
           </Label>
           <StyledSelect
             id={`machinesAndDevices-${index}`}
