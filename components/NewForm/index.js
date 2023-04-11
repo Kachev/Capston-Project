@@ -1,11 +1,12 @@
 import Heading from "../Heading";
-import TimeCard from "../TimeCard";
+import TimeCard from "../TimeCard/timeCard";
 import Customer from "../Customer/CustomerCard";
 import Button from "../Button";
 import useLocalStorageState from "use-local-storage-state";
 import { WorkReports } from "../../DB/data";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import MaterialsCard from "../MaterialsCard";
 
 const StyledSection = styled.section`
   display: flex;
@@ -16,12 +17,13 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 325px;
 `;
 
 export default function NewForm() {
   const router = useRouter();
   const [newWorkReports, setNewWorkReports] = useLocalStorageState(
-    "workReport",
+    "WorkReports",
     { defaultValue: WorkReports }
   );
 
@@ -45,6 +47,7 @@ export default function NewForm() {
         <Form onSubmit={handleAddNewWorkReport}>
           <TimeCard />
           <Customer />
+          <MaterialsCard />
           <Button type="submit">Fertigstellen</Button>
         </Form>
       </StyledSection>

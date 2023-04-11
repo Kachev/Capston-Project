@@ -1,5 +1,22 @@
+import styled from "styled-components";
 import { Label, Input, StyledFormFieldset } from "../Customer/CustomerForm";
+const StyledContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
 
+const StyledTimeContainer = styled.div`
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+`;
+const InputPause = styled.input`
+  width:80px;
+  height: 30px;
+  font-size: inherit;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+`;
 export default function TimeForm() {
   return (
     <StyledFormFieldset>
@@ -14,24 +31,29 @@ export default function TimeForm() {
         aria-label="Worker name"
         required
       />
-      <Label htmlFor="workerFrom">Von</Label>
-      <Input
-        id="workerFrom"
-        type="time"
-        name="from"
-        aria-label="From"
-        required
-      />
-      <Label htmlFor="workerTo">Bis</Label>
-      <Input id="workerTo" type="time" name="to" aria-label="To" required />
-      <Label htmlFor="workerPause">Pause</Label>
-      <Input
-        id="workerPause"
-        type="time"
-        name="pause"
-        aria-label="Pause"
-        required
-      />
+      <StyledContainer>
+        <Label htmlFor="workerFrom">Von</Label>
+        <Label htmlFor="workerTo">Bis</Label>
+        <Label htmlFor="workerPause">Pause</Label>
+      </StyledContainer>
+      <StyledTimeContainer>
+        <Input
+          id="workerFrom"
+          type="time"
+          name="from"
+          aria-label="From"
+          required
+        />
+        <Input id="workerTo" type="time" name="to" aria-label="To" required />
+        <InputPause
+          id="workerPause"
+          type="number"
+          name="pause"
+          min="0"
+          aria-label="Pause"
+          required
+        />
+      </StyledTimeContainer>
     </StyledFormFieldset>
   );
 }
