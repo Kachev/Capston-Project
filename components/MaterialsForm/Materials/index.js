@@ -1,5 +1,5 @@
-import { StyledContainer } from "../Machines";
-import { StyledAddButton } from "../Plants";
+import { StyledContainer, StyledButtonContainer } from "../Machines";
+import { StyledAddButton, StyledDeleteButton } from "../Plants";
 import {
   Label,
   StyledSelect,
@@ -7,20 +7,31 @@ import {
   StyledCheckboxLabel,
 } from "..";
 import { Input } from "../../Customer/CustomerForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Materials() {
   const [newMaterials, setNewMaterials] = useState([{ id: 1, materials: "" }]);
+  const [hideButton, setHideButton] = useState(false);
+
   function handleAddNewMaterials() {
     setNewMaterials([
       ...newMaterials,
       { id: newMaterials.length + 1, materials: "", aLot: "", unit: [] },
     ]);
   }
+  useEffect(() => {
+    if (newMaterials.length > 1) {
+      setHideButton(false);
+    } else {
+      setHideButton(true);
+    }
+  }, [newMaterials]);
   function handleDeleteMaterials(index) {
     const list = [...newMaterials];
     if (list.length > 1) {
       list.splice(index, 1);
+    } else if (list.length === 1) {
+      setHideButton(true);
     }
     setNewMaterials(list);
   }
@@ -89,15 +100,21 @@ export default function Materials() {
               onChange={(event) => handleUnitChange({ event, index })}
             />
           </StyledCheckboxContainer>
-          <button type="button" onClick={() => handleDeleteMaterials(index)}>
-            Delete
-          </button>
-
-          {newMaterials.length - 1 === index && (
-            <StyledAddButton type="button" onClick={handleAddNewMaterials}>
-              <span>+</span>
-            </StyledAddButton>
-          )}
+          <StyledButtonContainer>
+            {!hideButton && (
+              <StyledDeleteButton
+                type="button"
+                onClick={() => handleDeleteMaterials(index)}
+              >
+                <span>X</span>
+              </StyledDeleteButton>
+            )}
+            {newMaterials.length - 1 === index && (
+              <StyledAddButton type="button" onClick={handleAddNewMaterials}>
+                <span>+</span>
+              </StyledAddButton>
+            )}
+          </StyledButtonContainer>
         </StyledContainer>
       ))}
     </article>

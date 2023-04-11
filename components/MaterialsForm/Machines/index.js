@@ -1,16 +1,31 @@
 import styled from "styled-components";
-import { StyledAddButton } from "../Plants";
+import { StyledAddButton, StyledDeleteButton } from "../Plants";
 import { StyledSelect, Label } from "..";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+  border-bottom: 2px solid black;
+`;
+export const StyledButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
 `;
 
 export default function Machines() {
   const [newMachines, setNewMachines] = useState([{ machinesAndDevices: "" }]);
+  const [hideButton, setHideButton] = useState(true);
+
+  useEffect(() => {
+    if (newMachines.length > 1) {
+      setHideButton(false);
+    } else {
+      setHideButton(true);
+    }
+  }, [newMachines]);
+
   function handleDeleteMachines(index) {
     const list = [...newMachines];
     if (list.length > 1) {
@@ -50,14 +65,21 @@ export default function Machines() {
             <option value="Laubbläser">Laubbläser</option>
             <option value="Kompaktbagger">Kompaktbagger</option>
           </StyledSelect>
-          <button type="button" onClick={() => handleDeleteMachines(index)}>
-            Delete
-          </button>
-          {newMachines.length - 1 === index && (
-            <StyledAddButton type="button" onClick={handleAddNewMachines}>
-              <span>+</span>
-            </StyledAddButton>
-          )}
+          <StyledButtonContainer>
+            {!hideButton && (
+              <StyledDeleteButton
+                type="button"
+                onClick={() => handleDeleteMachines(index)}
+              >
+                <span>X</span>
+              </StyledDeleteButton>
+            )}
+            {newMachines.length - 1 === index && (
+              <StyledAddButton type="button" onClick={handleAddNewMachines}>
+                <span>+</span>
+              </StyledAddButton>
+            )}
+          </StyledButtonContainer>
         </StyledContainer>
       ))}
     </article>

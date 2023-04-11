@@ -1,11 +1,8 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Label, Input } from "../../Customer/CustomerForm";
-const StyledPlantContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-`;
+import { StyledContainer, StyledButtonContainer } from "../Machines";
+
 export const StyledAddButton = styled.button`
   width: 40px;
   height: 30px;
@@ -16,21 +13,43 @@ export const StyledAddButton = styled.button`
   box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
   align-self: center;
   margin-top: 10px;
+  margin-bottom: 8px;
+`;
+export const StyledDeleteButton = styled.button`
+  width: 40px;
+  height: 30px;
+  background-color: #d11a2a;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+  align-self: center;
+  margin-top: 10px;
+  margin-bottom: 8px;
 `;
 export default function Plants() {
   const [newPlant, setNewPlant] = useState([{ id: 1, plant: "" }]);
+  const [hideButton, setHideButton] = useState(false);
+
+  function handleAddPlant() {
+    setNewPlant([
+      ...newPlant,
+      { id: newPlant.length + 1, plant: "", amount: "" },
+    ]);
+  }
+  useEffect(() => {
+    if (newPlant.length > 1) {
+      setHideButton(false);
+    } else {
+      setHideButton(true);
+    }
+  }, [newPlant]);
   function handleDeletePlant(index) {
     const list = [...newPlant];
     if (list.length > 1) {
       list.splice(index, 1);
     }
     setNewPlant(list);
-  }
-  function handleAddPlant() {
-    setNewPlant([
-      ...newPlant,
-      { id: newPlant.length + 1, plant: "", amount: "" },
-    ]);
   }
   function handlePlantChange(event, index) {
     const { value } = event.target;
@@ -47,7 +66,7 @@ export default function Plants() {
   return (
     <article>
       {newPlant.map((plant, index) => (
-        <StyledPlantContainer key={plant.id}>
+        <StyledContainer key={plant.id}>
           <Label htmlFor={`plant-${index}`}>Pflanzen</Label>
           <Input
             id={`plant-${index}`}
@@ -64,15 +83,22 @@ export default function Plants() {
             aria-label="a lot"
             onChange={(event) => handlePlantAmountChange(event, index)}
           />
-          <button type="button" onClick={() => handleDeletePlant(index)}>
-            Delete
-          </button>
-          {newPlant.length - 1 === index && (
-            <StyledAddButton type="button" onClick={handleAddPlant}>
-              <span>+</span>
-            </StyledAddButton>
-          )}
-        </StyledPlantContainer>
+          <StyledButtonContainer>
+            {!hideButton && (
+              <StyledDeleteButton
+                type="button"
+                onClick={() => handleDeletePlant(index)}
+              >
+                <span>X</span>
+              </StyledDeleteButton>
+            )}
+            {newPlant.length - 1 === index && (
+              <StyledAddButton type="button" onClick={handleAddPlant}>
+                <span>+</span>
+              </StyledAddButton>
+            )}
+          </StyledButtonContainer>
+        </StyledContainer>
       ))}
     </article>
   );

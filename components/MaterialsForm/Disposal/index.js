@@ -4,14 +4,22 @@ import {
   StyledCheckboxContainer,
   StyledCheckboxLabel,
 } from "..";
-import { StyledAddButton } from "../Plants";
+import { StyledAddButton, StyledDeleteButton } from "../Plants";
 import { Input } from "../../Customer/CustomerForm";
-import { useState } from "react";
-import { StyledContainer } from "../Machines";
+import { useState, useEffect } from "react";
+import { StyledContainer, StyledButtonContainer } from "../Machines";
 
 export default function Disposal() {
   const [newDisposal, setNewDisposal] = useState([{ id: 1, disposal: "" }]);
+  const [hideButton, setHideButton] = useState(true);
 
+  useEffect(() => {
+    if (newDisposal.length > 1) {
+      setHideButton(false);
+    } else {
+      setHideButton(true);
+    }
+  }, [newDisposal]);
   function handleDeleteDisposal(index) {
     const list = [...newDisposal];
     if (list.length > 1) {
@@ -89,15 +97,21 @@ export default function Disposal() {
               onChange={(event) => handleUnitChange({ event, index })}
             />
           </StyledCheckboxContainer>
-          <button type="button" onClick={() => handleDeleteDisposal(index)}>
-            Delete
-          </button>
-
-          {newDisposal.length - 1 === index && (
-            <StyledAddButton type="button" onClick={handleAddDisposal}>
-              <span>+</span>
-            </StyledAddButton>
-          )}
+          <StyledButtonContainer>
+            {!hideButton && (
+              <StyledDeleteButton
+                type="button"
+                onClick={() => handleDeleteDisposal(index)}
+              >
+                <span>X</span>
+              </StyledDeleteButton>
+            )}
+            {newDisposal.length - 1 === index && (
+              <StyledAddButton type="button" onClick={handleAddDisposal}>
+                <span>+</span>
+              </StyledAddButton>
+            )}
+          </StyledButtonContainer>
         </StyledContainer>
       ))}
     </article>
