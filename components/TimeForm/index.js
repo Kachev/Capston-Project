@@ -10,6 +10,13 @@ const StyledTimeContainer = styled.div`
   display: flex;
   justify-content: space-around;
 `;
+const InputPause = styled.input`
+  width:80px;
+  height: 30px;
+  font-size: inherit;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+`;
 export default function TimeForm() {
   return (
     <StyledFormFieldset>
@@ -32,17 +39,17 @@ export default function TimeForm() {
       <StyledTimeContainer>
         <Input
           id="workerFrom"
-          type="number"
+          type="time"
           name="from"
           aria-label="From"
-          min="0"
           required
         />
         <Input id="workerTo" type="time" name="to" aria-label="To" required />
-        <Input
+        <InputPause
           id="workerPause"
-          type="time"
+          type="number"
           name="pause"
+          min="0"
           aria-label="Pause"
           required
         />
