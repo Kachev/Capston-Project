@@ -104,14 +104,19 @@ export default function Materials() {
             {!hideButton && (
               <StyledDeleteButton
                 type="button"
+                aria-label="Button to delete a material"
                 onClick={() => handleDeleteMaterials(index)}
               >
-                <span>X</span>
+                X
               </StyledDeleteButton>
             )}
             {newMaterials.length - 1 === index && (
-              <StyledAddButton type="button" onClick={handleAddNewMaterials}>
-                <span>+</span>
+              <StyledAddButton
+                type="button"
+                aria-label="Button to add a new material"
+                onClick={handleAddNewMaterials}
+              >
+                +
               </StyledAddButton>
             )}
           </StyledButtonContainer>

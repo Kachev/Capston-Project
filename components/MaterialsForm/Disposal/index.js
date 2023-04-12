@@ -101,13 +101,14 @@ export default function Disposal() {
             {!hideButton && (
               <StyledDeleteButton
                 type="button"
+                aria-label="Button to delete a disposal"
                 onClick={() => handleDeleteDisposal(index)}
               >
                 <span>X</span>
               </StyledDeleteButton>
             )}
             {newDisposal.length - 1 === index && (
-              <StyledAddButton type="button" onClick={handleAddDisposal}>
+              <StyledAddButton type="button" aria-label="Button to add a new disposal" onClick={handleAddDisposal}>
                 <span>+</span>
               </StyledAddButton>
             )}

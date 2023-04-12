@@ -87,13 +87,14 @@ export default function Plants() {
             {!hideButton && (
               <StyledDeleteButton
                 type="button"
+                aria-label="Button to delete a plant"
                 onClick={() => handleDeletePlant(index)}
               >
                 <span>X</span>
               </StyledDeleteButton>
             )}
             {newPlant.length - 1 === index && (
-              <StyledAddButton type="button" onClick={handleAddPlant}>
+              <StyledAddButton type="button" aria-label="Button to add a new plant" onClick={handleAddPlant}>
                 <span>+</span>
               </StyledAddButton>
             )}

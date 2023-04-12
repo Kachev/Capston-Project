@@ -69,14 +69,19 @@ export default function Machines() {
             {!hideButton && (
               <StyledDeleteButton
                 type="button"
+                aria-label="Button to delete a Machine."
                 onClick={() => handleDeleteMachines(index)}
               >
-                <span>X</span>
+                X
               </StyledDeleteButton>
             )}
             {newMachines.length - 1 === index && (
-              <StyledAddButton type="button" onClick={handleAddNewMachines}>
-                <span>+</span>
+              <StyledAddButton
+                type="button"
+                aria-label="Button to add a new Machine"
+                onClick={handleAddNewMachines}
+              >
+                +
               </StyledAddButton>
             )}
           </StyledButtonContainer>
