@@ -48,7 +48,7 @@ export default function NewForm() {
           <TimeCard />
           <Customer />
           <MaterialsCard />
-          <Button type="submit">Fertigstellen</Button>
+          <Button aria-label="Button for submiting information" type="submit">Fertigstellen</Button>
         </Form>
       </StyledSection>
     </main>

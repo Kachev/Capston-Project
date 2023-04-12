@@ -4,7 +4,7 @@ import Machines from ".";
 
 test("renders machines dropdown", async () => {
   render(<Machines />);
-  const dropdowns = screen.getAllByLabelText("Maschinen und Geräte");
+  const dropdowns = screen.getAllByLabelText("Maschinen");
   expect(dropdowns).toHaveLength(1);
 
   await userEvent.selectOptions(dropdowns[0], ["Laubbläser"]);
@@ -12,10 +12,10 @@ test("renders machines dropdown", async () => {
 
   await userEvent.click(screen.getByText("+"));
 
-  const allDropdowns = screen.getAllByLabelText("Maschinen und Geräte");
+  const allDropdowns = screen.getAllByLabelText("Maschinen");
   expect(allDropdowns).toHaveLength(2);
 
-  const secondDropdown = screen.getAllByLabelText("Maschinen und Geräte", {
+  const secondDropdown = screen.getAllByLabelText("Maschinen", {
     selector: "select:last-of-type",
   });
   expect(secondDropdown[0]).toBeInTheDocument();
