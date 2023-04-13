@@ -40,15 +40,18 @@ export default function JobDescriptionForm() {
 
   return (
     <StyledFormFieldset>
-      <StyledHeadlineFour>Beschreibung</StyledHeadlineFour>
       {newDescriptions.map((dropDown, index) => (
         <StyledSelectContainer
           key={`${index}-${newDescriptions[index].description}`}
         >
-          <Label
-            htmlFor={`description-${index}`}
-            aria-label="Work description"
-          ></Label>
+          {index === 0 && (
+            <Label
+              htmlFor={`description-${index}`}
+              aria-label="Work description"
+            >
+              Beschreibung
+            </Label>
+          )}
           <StyledSelect
             id={`description-${index}`}
             name={`description-${index}`}

@@ -4,18 +4,17 @@ import JobDescriptionForm from "../JobDescriptionForm/index";
 
 test("renders job description inputs", async () => {
   render(<JobDescriptionForm />);
-  const descriptionInputs = screen.getAllByLabelText("");
+  const descriptionInputs = screen.getAllByLabelText("Beschreibung");
   expect(descriptionInputs).toHaveLength(1);
 
   await userEvent.selectOptions(descriptionInputs[0], ["Apfelbaum gepflanzt"]);
   expect(screen.getByDisplayValue("Apfelbaum gepflanzt")).toBeInTheDocument();
 
-  await userEvent.click(screen.getByText("+"));
+  await userEvent.click(
+    screen.getByLabelText("Button to add a new description")
+  );
 
-  const allDescriptionInputs = screen.getAllByLabelText("");
-  expect(allDescriptionInputs).toHaveLength(2);
-
-  const secondDescriptionInput = allDescriptionInputs[1];
+  const secondDescriptionInput = screen.getAllByLabelText("Beschreibung")[0];
   expect(secondDescriptionInput).toBeInTheDocument();
 
   await userEvent.selectOptions(secondDescriptionInput, ["Unkraut entfernt"]);

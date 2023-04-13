@@ -45,10 +45,9 @@ const StyledContainer = styled.div`
   padding: 5px;
 `;
 const StyledDescriptionSection = styled.section`
-display:flex;
-flex-direction:column;
-border-top:1px dashed black;
-
+  display: flex;
+  flex-direction: column;
+  border-top: 1px dashed black;
 `;
 
 export default function Forms({ newWorkReports }) {
