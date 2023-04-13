@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledHeadlineThree = styled.h3`
+export const StyledHeadlineThree = styled.h3`
   margin-bottom: 3px;
   align-self: start;
 `;
@@ -43,6 +43,12 @@ const StyledContainer = styled.div`
   flex-direction: column;
   border: 2px solid black;
   padding: 5px;
+`;
+const StyledDescriptionSection = styled.section`
+display:flex;
+flex-direction:column;
+border-top:1px dashed black;
+
 `;
 
 export default function Forms({ newWorkReports }) {
@@ -178,6 +184,25 @@ export default function Forms({ newWorkReports }) {
                         </StyledParagraph>
                       );
                     }
+                  })}
+              </StyledSection>
+              <StyledHeadlineThree>Arbeitsbeschreibung</StyledHeadlineThree>
+              <StyledSection>
+                {Object.entries(workReport)
+                  .filter(([key]) => key.startsWith("description-"))
+                  .map(([key, value], index) => {
+                    if (key.endsWith("-textarea") && index > 0) {
+                      return (
+                        <StyledDescriptionSection key={key}>
+                          <StyledParagraph>{value}</StyledParagraph>
+                        </StyledDescriptionSection>
+                      );
+                    } else if (!key.endsWith("-textarea")) {
+                      return (
+                        <StyledParagraph key={key}>{value}</StyledParagraph>
+                      );
+                    }
+                    return null;
                   })}
               </StyledSection>
             </StyledContainer>

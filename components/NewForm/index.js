@@ -7,6 +7,7 @@ import { WorkReports } from "../../DB/data";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import MaterialsCard from "../MaterialsCard";
+import JobDescriptionCard from "../JobDescriptionCard";
 
 const StyledSection = styled.section`
   display: flex;
@@ -48,6 +49,7 @@ export default function NewForm() {
           <TimeCard />
           <Customer />
           <MaterialsCard />
+          <JobDescriptionCard/>
           <Button aria-label="Button for submiting information" type="submit">Fertigstellen</Button>
         </Form>
       </StyledSection>
