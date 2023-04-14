@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import JobDescriptionForm from "../JobDescriptionForm/index";
+import JobDescriptionForm from "./index";
 
 test("renders job description inputs", async () => {
   render(<JobDescriptionForm />);

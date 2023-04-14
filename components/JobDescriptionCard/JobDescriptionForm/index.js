@@ -11,10 +11,7 @@ const StyledSelectContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const StyledHeadlineFour = styled.h4`
-  padding: 0;
-  margin: 0;
-`;
+
 export default function JobDescriptionForm() {
   const [newDescriptions, setNewDescription] = useState([
     { id: 1, description: "" },
@@ -56,6 +53,7 @@ export default function JobDescriptionForm() {
             id={`description-${index}`}
             name={`description-${index}`}
             value={newDescriptions[index].description}
+            required
             onChange={(event) => handleDescriptionChange({ event, index })}
           >
             <option value="">Bitte auswählen</option>

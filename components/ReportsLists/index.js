@@ -193,7 +193,13 @@ export default function Forms({ newWorkReports }) {
                     if (key.endsWith("-textarea") && index > 0) {
                       return (
                         <StyledDescriptionSection key={key}>
-                          <StyledParagraph>{value}</StyledParagraph>
+                          {value.trim() === "" ? (
+                            <StyledParagraph>
+                              Keine zusätzliche Informationen
+                            </StyledParagraph>
+                          ) : (
+                            <StyledParagraph>{value}</StyledParagraph>
+                          )}
                         </StyledDescriptionSection>
                       );
                     } else if (!key.endsWith("-textarea")) {
