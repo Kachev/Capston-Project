@@ -1,4 +1,6 @@
+import { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
+import { ArrowDownIcon, ArrowUpIcon } from "../../public/icons";
 
 export const StyledHeadlineThree = styled.h3`
   margin-bottom: 3px;
@@ -27,22 +29,26 @@ const StyledLi = styled.li`
   display: flex;
   gap: 1rem;
   min-width: 325px;
+  ${({ isExpanded }) =>
+    isExpanded === false
+      ? "overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 7; -webkit-box-orient: vertical;"
+      : ""};
 `;
 const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
 `;
 const StyledSection = styled.section`
-  display: flex;
+  /*   display: flex;
   border: 2px solid black;
   justify-content: space-around;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
 `;
 const StyledContainer = styled.div`
-  display: flex;
+  /*  display: flex;
   flex-direction: column;
   border: 2px solid black;
-  padding: 5px;
+  padding: 5px; */
 `;
 const StyledDescriptionSection = styled.section`
   display: flex;
@@ -50,17 +56,65 @@ const StyledDescriptionSection = styled.section`
   border-top: 1px dashed black;
 `;
 
+const StyledButton = styled.button`
+  border: none;
+  align-self: start;
+  background-color: white;
+`;
+
 export default function Forms({ newWorkReports }) {
+  const newWorkReportsRef = useRef();
+  const [isExpanded, setIsExpanded] = useState(newWorkReports.map(() => false));
+  const [needExpandBtn, setNeedExpandBtn] = useState(false);
+
+  useEffect(() => {
+    setNeedExpandBtn(
+      newWorkReportsRef?.current?.scrollHeight >
+        newWorkReportsRef?.current?.clientHeight
+    );
+  }, []);
+
   return (
-    <StyledUl>
+    <StyledUl ref={newWorkReportsRef}>
       {newWorkReports &&
         newWorkReports.map((workReport, index) => (
-          <StyledLi key={index}>
+          <StyledLi isExpanded={isExpanded[index]} key={workReport}>
+            {!needExpandBtn && (
+              <StyledButton
+                aria-label="Button to expand and collapse reports"
+                onClick={() => {
+                  const newExpanded = [...isExpanded];
+                  newExpanded[index] = !newExpanded[index];
+                  setIsExpanded(newExpanded);
+                }}
+              >
+                {isExpanded[index] ? (
+                  <ArrowUpIcon alt="Arrow icon pointing up" color="black" />
+                ) : (
+                  <ArrowDownIcon alt="Arrow icon pointing down" color="black" />
+                )}
+              </StyledButton>
+            )}
             <StyledContainer>
               <StyledHeadlineTwo>Arbeitsbericht</StyledHeadlineTwo>
               <StyledParagraph>
                 <b>Datum:</b> {workReport.date}
               </StyledParagraph>
+              <StyledHeadlineThree>Kunde</StyledHeadlineThree>
+              <StyledSection>
+                <StyledParagraph>
+                  <b>Name: </b>
+                  {workReport.customerFirstName}
+                </StyledParagraph>
+                <StyledParagraph>
+                  <b>Familienname: </b>
+                  {workReport.customerSecondName}
+                </StyledParagraph>
+                <StyledParagraph>
+                  <b>Adresse: </b>
+                  {workReport.customerAddress}
+                </StyledParagraph>
+              </StyledSection>
               <StyledHeadlineThree>Mitarbeiter</StyledHeadlineThree>
               <StyledSection>
                 <StyledParagraph>
@@ -78,22 +132,7 @@ export default function Forms({ newWorkReports }) {
                 </StyledParagraph>
                 <StyledParagraph>
                   <b>Pause: </b>
-                  {workReport.pause}
-                </StyledParagraph>
-              </StyledSection>
-              <StyledHeadlineThree>Kunde</StyledHeadlineThree>
-              <StyledSection>
-                <StyledParagraph>
-                  <b>Name: </b>
-                  {workReport.customerFirstName}
-                </StyledParagraph>
-                <StyledParagraph>
-                  <b>Familienname: </b>
-                  {workReport.customerSecondName}
-                </StyledParagraph>
-                <StyledParagraph>
-                  <b>Adresse: </b>
-                  {workReport.customerAddress}
+                  {workReport.pause} Std.
                 </StyledParagraph>
               </StyledSection>
               <StyledHeadlineThree>Materialien</StyledHeadlineThree>

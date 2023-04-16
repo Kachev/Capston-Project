@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Forms from "../../components/ReportsLists";
 import { useRouter } from "next/router";
+import Reports from "../../components/ReportsLists";
 
 const StyledSection = styled.section`
   display: flex;
@@ -19,9 +20,8 @@ const StyledNewFormButton = styled.button`
   bottom: 20px;
 `;
 
-export default function ReportsList({}) {
+export default function ReportsList({ newWorkReports }) {
   const router = useRouter();
-  const newWorkReports = JSON.parse(router.query.newWorkReports || "[]");
 
   function handleOnClick() {
     router.push("/");
@@ -29,7 +29,11 @@ export default function ReportsList({}) {
   return (
     <StyledSection>
       <Forms newWorkReports={newWorkReports} />
-      <StyledNewFormButton type="button" onClick={handleOnClick} aria-label="Add new report">
+      <StyledNewFormButton
+        type="button"
+        onClick={handleOnClick}
+        aria-label="Add new report"
+      >
         +
       </StyledNewFormButton>
     </StyledSection>

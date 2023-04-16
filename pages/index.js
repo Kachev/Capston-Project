@@ -1,9 +1,12 @@
 import NewForm from "../components/NewForm";
 
-export default function Home() {
+export default function Home({ newWorkReports, setNewWorkReports }) {
   return (
     <main>
-      <NewForm />
+      <NewForm
+        newWorkReports={newWorkReports}
+        setNewWorkReports={setNewWorkReports}
+      />
     </main>
   );
 }
