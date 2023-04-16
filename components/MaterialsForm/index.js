@@ -8,7 +8,7 @@ const StyledFormFieldset = styled.fieldset`
   justify-content: space-around;
 `;
 const StyledContainer = styled.div`
-  max-width: 125px;
+  max-width: 135px;
 `;
 
 export const StyledCheckboxContainer = styled.div`
