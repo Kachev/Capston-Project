@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import MaterialsCard from "../MaterialsCard";
 import JobDescriptionCard from "../JobDescriptionCard";
-
+import { uid } from "uid";
 const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
@@ -34,7 +34,9 @@ export default function NewForm() {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    setNewWorkReports([data, ...newWorkReports]);
+    const newData = {id:uid(),...data}
+    console.log(newData);
+    setNewWorkReports([newData, ...newWorkReports]);
     router.push({
       pathname: "/ReportsList",
       query: { newWorkReports: JSON.stringify([data, ...newWorkReports]) },
