@@ -38,18 +38,6 @@ const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
 `;
-const StyledSection = styled.section`
-  /*   display: flex;
-  border: 2px solid black;
-  justify-content: space-around;
-  flex-wrap: wrap; */
-`;
-const StyledContainer = styled.div`
-  /*  display: flex;
-  flex-direction: column;
-  border: 2px solid black;
-  padding: 5px; */
-`;
 const StyledDescriptionSection = styled.section`
   display: flex;
   flex-direction: column;
@@ -95,13 +83,13 @@ export default function Forms({ newWorkReports }) {
                 )}
               </StyledButton>
             )}
-            <StyledContainer>
+            <div>
               <StyledHeadlineTwo>Arbeitsbericht</StyledHeadlineTwo>
               <StyledParagraph>
                 <b>Datum:</b> {workReport.date}
               </StyledParagraph>
               <StyledHeadlineThree>Kunde</StyledHeadlineThree>
-              <StyledSection>
+              <section>
                 <StyledParagraph>
                   <b>Name: </b>
                   {workReport.customerFirstName}
@@ -114,9 +102,9 @@ export default function Forms({ newWorkReports }) {
                   <b>Adresse: </b>
                   {workReport.customerAddress}
                 </StyledParagraph>
-              </StyledSection>
+              </section>
               <StyledHeadlineThree>Mitarbeiter</StyledHeadlineThree>
-              <StyledSection>
+              <section>
                 <StyledParagraph>
                   <b>Name: </b>
                   {workReport.workerName}
@@ -134,9 +122,9 @@ export default function Forms({ newWorkReports }) {
                   <b>Pause: </b>
                   {workReport.pause} Std.
                 </StyledParagraph>
-              </StyledSection>
+              </section>
               <StyledHeadlineThree>Materialien</StyledHeadlineThree>
-              <StyledSection>
+              <section>
                 {Object.entries(workReport)
                   .filter(([key]) => key.startsWith("materials-"))
                   .map(([key, value]) => {
@@ -166,17 +154,17 @@ export default function Forms({ newWorkReports }) {
                       return null;
                     }
                   })}
-              </StyledSection>
+              </section>
               <StyledHeadlineThree>Maschinen</StyledHeadlineThree>
-              <StyledSection>
+              <section>
                 {Object.entries(workReport)
                   .filter(([key]) => key.startsWith("machinesAndDevices-"))
                   .map(([, value]) => (
                     <StyledParagraph key={value}>{value}</StyledParagraph>
                   ))}
-              </StyledSection>{" "}
+              </section>{" "}
               <StyledHeadlineThree>Entsorgung</StyledHeadlineThree>
-              <StyledSection>
+              <section>
                 {Object.entries(workReport)
                   .filter(([key]) => key.startsWith("disposal-"))
                   .map(([key, value]) => {
@@ -206,9 +194,9 @@ export default function Forms({ newWorkReports }) {
                       return null;
                     }
                   })}
-              </StyledSection>{" "}
+              </section>{" "}
               <StyledHeadlineThree>Pflanzen</StyledHeadlineThree>
-              <StyledSection>
+              <section>
                 {Object.entries(workReport)
                   .filter(([key]) => key.startsWith("plant-"))
                   .map(([key, value]) => {
@@ -223,9 +211,9 @@ export default function Forms({ newWorkReports }) {
                       );
                     }
                   })}
-              </StyledSection>
+              </section>
               <StyledHeadlineThree>Arbeitsbeschreibung</StyledHeadlineThree>
-              <StyledSection>
+              <section>
                 {Object.entries(workReport)
                   .filter(([key]) => key.startsWith("description-"))
                   .map(([key, value], index) => {
@@ -248,8 +236,8 @@ export default function Forms({ newWorkReports }) {
                     }
                     return null;
                   })}
-              </StyledSection>
-            </StyledContainer>
+              </section>
+            </div>
           </StyledLi>
         ))}
     </StyledUl>

@@ -57,7 +57,7 @@ export default function Disposal() {
             id={`disposal-${index}`}
             name={`disposal-${index}`}
             onChange={(event) => handleDisposalChange({ event, index })}
-          >
+          > <option value="">Bitte auswählen</option>
             <option value="Grüngut">Grüngut</option>
             <option value="Bauschut">Bauschut</option>
             <option value="Oberboden">Oberboden</option>
@@ -71,7 +71,7 @@ export default function Disposal() {
             aria-label="a lot"
             min="0"
             onChange={(event) => handleDisposalChange({ event, index })}
-            required
+            
           />
           <StyledCheckboxContainer>
             <StyledCheckboxLabel htmlFor={`disposal-${index}-t`}>

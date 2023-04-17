@@ -61,6 +61,7 @@ export default function Materials() {
             name={`materials-${index}`}
             onChange={(event) => handleMaterialChange({ event, index })}
           >
+            <option value="">Bitte auswählen</option>
             <option value="Erde">Erde</option>
             <option value="Lava">Lava</option>
             <option value="Unterbau">Unterbau</option>
@@ -74,7 +75,7 @@ export default function Materials() {
             min="0"
             aria-label="a lot"
             onChange={(event) => handleMaterialChange({ event, index })}
-            required
+            
           />
           <StyledCheckboxContainer>
             <StyledCheckboxLabel htmlFor={`materials-${index}-t`}>
