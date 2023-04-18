@@ -1,5 +1,6 @@
 export const WorkReports = [
   {
+    id: 1,
     date: "2023-04-06",
     workerName: "Fritz",
     from: "08:00",

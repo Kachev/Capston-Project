@@ -1,4 +1,8 @@
+import React from "react";
+import { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
+import { ArrowDownIcon, ArrowUpIcon } from "../../public/icons";
+import Image from "next/image";
 
 export const StyledHeadlineThree = styled.h3`
   margin-bottom: 3px;
@@ -27,22 +31,14 @@ const StyledLi = styled.li`
   display: flex;
   gap: 1rem;
   min-width: 325px;
+  ${({ isExpanded }) =>
+    isExpanded === false
+      ? "overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp:7; -webkit-box-orient: vertical;"
+      : ""};
 `;
 const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
-`;
-const StyledSection = styled.section`
-  display: flex;
-  border: 2px solid black;
-  justify-content: space-around;
-  flex-wrap: wrap;
-`;
-const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: 2px solid black;
-  padding: 5px;
 `;
 const StyledDescriptionSection = styled.section`
   display: flex;
@@ -50,39 +46,62 @@ const StyledDescriptionSection = styled.section`
   border-top: 1px dashed black;
 `;
 
-export default function Forms({ newWorkReports }) {
+const StyledButton = styled.button`
+  border: none;
+  align-self: start;
+  background-color: white;
+`;
+const StyledIcon = styled(Image)`
+  position: relative;
+  top: 4px;
+  left: 5px;
+  margin-right: 1rem;
+`;
+
+export default function Forms({ newWorkReports, setNewWorkReports }) {
+  const [workReports, setWorkReports] = useState(
+    newWorkReports.map(() => true)
+  );
+
+  const newWorkReportsRef = useRef();
+  const [isExpanded, setIsExpanded] = useState(newWorkReports.map(() => false));
+  const [needExpandBtn, setNeedExpandBtn] = useState(false);
+
+  useEffect(() => {
+    setNeedExpandBtn(
+      newWorkReportsRef?.current?.scrollHeight >
+        newWorkReportsRef?.current?.clientHeight
+    );
+  }, []);
+
   return (
-    <StyledUl>
+    <StyledUl ref={newWorkReportsRef}>
       {newWorkReports &&
-        newWorkReports.map((workReport, index) => (
-          <StyledLi key={index}>
-            <StyledContainer>
+        newWorkReports.map((workReport, id) => (
+          <StyledLi isExpanded={isExpanded[id]} key={workReport}>
+            {!needExpandBtn && (
+              <StyledButton
+                aria-label="Button to expand and collapse reports"
+                onClick={() => {
+                  const newExpanded = [...isExpanded];
+                  newExpanded[id] = !newExpanded[id];
+                  setIsExpanded(newExpanded);
+                }}
+              >
+                {isExpanded[id] ? (
+                  <ArrowUpIcon alt="Arrow icon pointing up" color="black" />
+                ) : (
+                  <ArrowDownIcon alt="Arrow icon pointing down" color="black" />
+                )}
+              </StyledButton>
+            )}
+            <div>
               <StyledHeadlineTwo>Arbeitsbericht</StyledHeadlineTwo>
               <StyledParagraph>
                 <b>Datum:</b> {workReport.date}
               </StyledParagraph>
-              <StyledHeadlineThree>Mitarbeiter</StyledHeadlineThree>
-              <StyledSection>
-                <StyledParagraph>
-                  <b>Name: </b>
-                  {workReport.workerName}
-                </StyledParagraph>
-                {/* <StyledHeadlineThree>Zeiten</StyledHeadlineThree> */}
-                <StyledParagraph>
-                  <b>Von: </b>
-                  {workReport.from}
-                </StyledParagraph>
-                <StyledParagraph>
-                  <b>Bis: </b>
-                  {workReport.to}
-                </StyledParagraph>
-                <StyledParagraph>
-                  <b>Pause: </b>
-                  {workReport.pause}
-                </StyledParagraph>
-              </StyledSection>
               <StyledHeadlineThree>Kunde</StyledHeadlineThree>
-              <StyledSection>
+              <section>
                 <StyledParagraph>
                   <b>Name: </b>
                   {workReport.customerFirstName}
@@ -95,9 +114,28 @@ export default function Forms({ newWorkReports }) {
                   <b>Adresse: </b>
                   {workReport.customerAddress}
                 </StyledParagraph>
-              </StyledSection>
+              </section>
+              <StyledHeadlineThree>Mitarbeiter</StyledHeadlineThree>
+              <section>
+                <StyledParagraph>
+                  <b>Name: </b>
+                  {workReport.workerName}
+                </StyledParagraph>
+                <StyledParagraph>
+                  <b>Von: </b>
+                  {workReport.from}
+                </StyledParagraph>
+                <StyledParagraph>
+                  <b>Bis: </b>
+                  {workReport.to}
+                </StyledParagraph>
+                <StyledParagraph>
+                  <b>Pause: </b>
+                  {workReport.pause} Std.
+                </StyledParagraph>
+              </section>
               <StyledHeadlineThree>Materialien</StyledHeadlineThree>
-              <StyledSection>
+              <section>
                 {Object.entries(workReport)
                   .filter(([key]) => key.startsWith("materials-"))
                   .map(([key, value]) => {
@@ -127,17 +165,17 @@ export default function Forms({ newWorkReports }) {
                       return null;
                     }
                   })}
-              </StyledSection>
+              </section>
               <StyledHeadlineThree>Maschinen</StyledHeadlineThree>
-              <StyledSection>
+              <section>
                 {Object.entries(workReport)
                   .filter(([key]) => key.startsWith("machinesAndDevices-"))
                   .map(([, value]) => (
                     <StyledParagraph key={value}>{value}</StyledParagraph>
                   ))}
-              </StyledSection>{" "}
+              </section>{" "}
               <StyledHeadlineThree>Entsorgung</StyledHeadlineThree>
-              <StyledSection>
+              <section>
                 {Object.entries(workReport)
                   .filter(([key]) => key.startsWith("disposal-"))
                   .map(([key, value]) => {
@@ -167,9 +205,9 @@ export default function Forms({ newWorkReports }) {
                       return null;
                     }
                   })}
-              </StyledSection>{" "}
+              </section>{" "}
               <StyledHeadlineThree>Pflanzen</StyledHeadlineThree>
-              <StyledSection>
+              <section>
                 {Object.entries(workReport)
                   .filter(([key]) => key.startsWith("plant-"))
                   .map(([key, value]) => {
@@ -184,9 +222,9 @@ export default function Forms({ newWorkReports }) {
                       );
                     }
                   })}
-              </StyledSection>
+              </section>
               <StyledHeadlineThree>Arbeitsbeschreibung</StyledHeadlineThree>
-              <StyledSection>
+              <section>
                 {Object.entries(workReport)
                   .filter(([key]) => key.startsWith("description-"))
                   .map(([key, value], index) => {
@@ -209,8 +247,8 @@ export default function Forms({ newWorkReports }) {
                     }
                     return null;
                   })}
-              </StyledSection>
-            </StyledContainer>
+              </section>
+            </div>
           </StyledLi>
         ))}
     </StyledUl>

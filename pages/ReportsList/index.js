@@ -19,17 +19,23 @@ const StyledNewFormButton = styled.button`
   bottom: 20px;
 `;
 
-export default function ReportsList({}) {
+export default function ReportsList({ newWorkReports, setNewWorkReports }) {
   const router = useRouter();
-  const newWorkReports = JSON.parse(router.query.newWorkReports || "[]");
 
   function handleOnClick() {
     router.push("/");
   }
   return (
     <StyledSection>
-      <Forms newWorkReports={newWorkReports} />
-      <StyledNewFormButton type="button" onClick={handleOnClick} aria-label="Add new report">
+      <Forms
+        newWorkReports={newWorkReports}
+        setNewWorkReports={setNewWorkReports}
+      />
+      <StyledNewFormButton
+        type="button"
+        onClick={handleOnClick}
+        aria-label="Add new report"
+      >
         +
       </StyledNewFormButton>
     </StyledSection>

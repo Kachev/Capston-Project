@@ -2,13 +2,11 @@ import Heading from "../Heading";
 import TimeCard from "../TimeCard/timeCard";
 import Customer from "../Customer/CustomerCard";
 import Button from "../Button";
-import useLocalStorageState from "use-local-storage-state";
-import { WorkReports } from "../../DB/data";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import MaterialsCard from "../MaterialsCard";
 import JobDescriptionCard from "../JobDescriptionCard";
-
+import { uid } from "uid";
 const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
@@ -21,26 +19,21 @@ const Form = styled.form`
   min-width: 325px;
 `;
 
-export default function NewForm() {
+export default function NewForm({ newWorkReports, setNewWorkReports }) {
   const router = useRouter();
-  const [newWorkReports, setNewWorkReports] = useLocalStorageState(
-    "WorkReports",
-    { defaultValue: WorkReports }
-  );
-
-  console.log(newWorkReports);
 
   function handleAddNewWorkReport(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    setNewWorkReports([data, ...newWorkReports]);
+    const newData = { id: uid(), ...data };
+
+    setNewWorkReports([newData, ...newWorkReports]);
     router.push({
       pathname: "/ReportsList",
-      query: { newWorkReports: JSON.stringify([data, ...newWorkReports]) },
     });
   }
-
+  console.log(newWorkReports);
   return (
     <main>
       <StyledSection>
@@ -49,8 +42,10 @@ export default function NewForm() {
           <TimeCard />
           <Customer />
           <MaterialsCard />
-          <JobDescriptionCard/>
-          <Button aria-label="Button for submiting information" type="submit">Fertigstellen</Button>
+          <JobDescriptionCard />
+          <Button aria-label="Button for submiting information" type="submit">
+            Fertigstellen
+          </Button>
         </Form>
       </StyledSection>
     </main>

@@ -11,7 +11,7 @@ const StyledTimeContainer = styled.div`
   justify-content: space-around;
 `;
 const InputPause = styled.input`
-  width:80px;
+  width: 80px;
   height: 30px;
   font-size: inherit;
   border: 2px solid black;
@@ -21,7 +21,14 @@ export default function TimeForm() {
   return (
     <StyledFormFieldset>
       <Label htmlFor="date">Datum:</Label>
-      <Input id="date" type="date" name="date" aria-label="Date" required />
+      <Input
+        id="date"
+        type="date"
+        name="date"
+        aria-label="Date"
+        defaultValue={new Date().toISOString().slice(0, 10)}
+        required
+      />
       <Label htmlFor="workerName">Mitarbeiter</Label>
       <Input
         type="text"
@@ -42,14 +49,23 @@ export default function TimeForm() {
           type="time"
           name="from"
           aria-label="From"
+          defaultValue="08:00"
           required
         />
-        <Input id="workerTo" type="time" name="to" aria-label="To" required />
+        <Input
+          id="workerTo"
+          type="time"
+          name="to"
+          aria-label="To"
+          defaultValue="16:30"
+          required
+        />
         <InputPause
           id="workerPause"
           type="number"
           name="pause"
           min="0"
+          step="any"
           aria-label="Pause"
           required
         />

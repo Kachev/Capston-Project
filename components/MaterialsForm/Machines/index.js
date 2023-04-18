@@ -59,6 +59,9 @@ export default function Machines() {
             value={newMachines[index].machinesAndDevices}
             onChange={(event) => handleMachinesChange(event, index)}
           >
+            <option value="">Bitte auswählen</option>
+            <option value="Sprinter">Sprinter</option>
+            <option value="LKW">LKW</option>
             <option value="Rasenmäher">Rasenmäher</option>
             <option value="Laubbläser">Laubbläser</option>
             <option value="Kompaktbagger">Kompaktbagger</option>
