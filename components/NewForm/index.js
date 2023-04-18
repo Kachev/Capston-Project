@@ -33,7 +33,6 @@ export default function NewForm({ newWorkReports, setNewWorkReports }) {
       pathname: "/ReportsList",
     });
   }
-
   console.log(newWorkReports);
   return (
     <main>

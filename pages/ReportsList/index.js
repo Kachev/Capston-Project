@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Forms from "../../components/ReportsLists";
 import { useRouter } from "next/router";
-import Reports from "../../components/ReportsLists";
 
 const StyledSection = styled.section`
   display: flex;
@@ -20,7 +19,7 @@ const StyledNewFormButton = styled.button`
   bottom: 20px;
 `;
 
-export default function ReportsList({ newWorkReports }) {
+export default function ReportsList({ newWorkReports, setNewWorkReports }) {
   const router = useRouter();
 
   function handleOnClick() {
@@ -28,7 +27,10 @@ export default function ReportsList({ newWorkReports }) {
   }
   return (
     <StyledSection>
-      <Forms newWorkReports={newWorkReports} />
+      <Forms
+        newWorkReports={newWorkReports}
+        setNewWorkReports={setNewWorkReports}
+      />
       <StyledNewFormButton
         type="button"
         onClick={handleOnClick}

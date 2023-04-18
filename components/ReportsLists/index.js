@@ -1,6 +1,8 @@
+import React from "react";
 import { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import { ArrowDownIcon, ArrowUpIcon } from "../../public/icons";
+import Image from "next/image";
 
 export const StyledHeadlineThree = styled.h3`
   margin-bottom: 3px;
@@ -31,7 +33,7 @@ const StyledLi = styled.li`
   min-width: 325px;
   ${({ isExpanded }) =>
     isExpanded === false
-      ? "overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 7; -webkit-box-orient: vertical;"
+      ? "overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp:7; -webkit-box-orient: vertical;"
       : ""};
 `;
 const StyledUl = styled.ul`
@@ -49,8 +51,18 @@ const StyledButton = styled.button`
   align-self: start;
   background-color: white;
 `;
+const StyledIcon = styled(Image)`
+  position: relative;
+  top: 4px;
+  left: 5px;
+  margin-right: 1rem;
+`;
 
-export default function Forms({ newWorkReports }) {
+export default function Forms({ newWorkReports, setNewWorkReports }) {
+  const [workReports, setWorkReports] = useState(
+    newWorkReports.map(() => true)
+  );
+
   const newWorkReportsRef = useRef();
   const [isExpanded, setIsExpanded] = useState(newWorkReports.map(() => false));
   const [needExpandBtn, setNeedExpandBtn] = useState(false);
@@ -65,18 +77,18 @@ export default function Forms({ newWorkReports }) {
   return (
     <StyledUl ref={newWorkReportsRef}>
       {newWorkReports &&
-        newWorkReports.map((workReport, index) => (
-          <StyledLi isExpanded={isExpanded[index]} key={workReport}>
+        newWorkReports.map((workReport, id) => (
+          <StyledLi isExpanded={isExpanded[id]} key={workReport}>
             {!needExpandBtn && (
               <StyledButton
                 aria-label="Button to expand and collapse reports"
                 onClick={() => {
                   const newExpanded = [...isExpanded];
-                  newExpanded[index] = !newExpanded[index];
+                  newExpanded[id] = !newExpanded[id];
                   setIsExpanded(newExpanded);
                 }}
               >
-                {isExpanded[index] ? (
+                {isExpanded[id] ? (
                   <ArrowUpIcon alt="Arrow icon pointing up" color="black" />
                 ) : (
                   <ArrowDownIcon alt="Arrow icon pointing down" color="black" />
@@ -109,7 +121,6 @@ export default function Forms({ newWorkReports }) {
                   <b>Name: </b>
                   {workReport.workerName}
                 </StyledParagraph>
-                {/* <StyledHeadlineThree>Zeiten</StyledHeadlineThree> */}
                 <StyledParagraph>
                   <b>Von: </b>
                   {workReport.from}

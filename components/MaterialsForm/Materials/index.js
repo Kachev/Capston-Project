@@ -75,7 +75,6 @@ export default function Materials() {
             min="0"
             aria-label="a lot"
             onChange={(event) => handleMaterialChange({ event, index })}
-            
           />
           <StyledCheckboxContainer>
             <StyledCheckboxLabel htmlFor={`materials-${index}-t`}>
