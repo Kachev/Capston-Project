@@ -67,6 +67,22 @@ export default function Forms({ newWorkReports, setNewWorkReports }) {
   const [isExpanded, setIsExpanded] = useState(newWorkReports.map(() => false));
   const [needExpandBtn, setNeedExpandBtn] = useState(false);
 
+  function handleEditeReport(id){
+    const editedWorkReport = [...newWorkReports];
+    
+  }
+
+  function handleDeleteReport(id){
+    const updatedNewWorkReports = [...newWorkReports];
+    updatedNewWorkReports.splice(id, 1);
+    setNewWorkReports(updatedNewWorkReports);
+
+    const updatedWorkReports = [...workReports];
+    updatedWorkReports.splice(id, 1);
+    setWorkReports(updatedWorkReports);
+  };
+
+
   useEffect(() => {
     setNeedExpandBtn(
       newWorkReportsRef?.current?.scrollHeight >
@@ -79,6 +95,15 @@ export default function Forms({ newWorkReports, setNewWorkReports }) {
       {newWorkReports &&
         newWorkReports.map((workReport, id) => (
           <StyledLi isExpanded={isExpanded[id]} key={workReport}>
+            <button>Bearbeiten</button>
+            <StyledButton onClick={() => handleDeleteReport(id)}>
+              <Image
+                src="/icons8-remove-24.png"
+                width={24}
+                height={24}
+                alt="delete icon"
+              />
+            </StyledButton>
             {!needExpandBtn && (
               <StyledButton
                 aria-label="Button to expand and collapse reports"
