@@ -43,15 +43,15 @@ export default function JobDescriptionForm() {
         >
           {index === 0 && (
             <Label
-              htmlFor={`description-${index}`}
+              htmlFor={`descriptions-${index}`}
               aria-label="Work description"
             >
               Beschreibung
             </Label>
           )}
           <StyledSelect
-            id={`description-${index}`}
-            name={`description-${index}`}
+            id={`descriptions-${index}`}
+            name={`descriptions-${index}`}
             value={newDescriptions[index].description}
             required
             onChange={(event) => handleDescriptionChange({ event, index })}
@@ -74,13 +74,13 @@ export default function JobDescriptionForm() {
         </StyledAddButton>
       </StyledContainer>
       <StyledContainer>
-        <Label htmlFor="description-textarea" aria-label="More information">
+        <Label htmlFor="textarea-description" aria-label="More information">
           Zusätzliche Informationen
         </Label>
         <StyledTextarea
-          id="description-textarea"
-          name="description-textarea"
-          value={textAreaValue}
+          id="textarea-description"
+          name="textarea-description"
+          defaultValue={textAreaValue}
           onChange={handleTextAreaChange}
         />
       </StyledContainer>

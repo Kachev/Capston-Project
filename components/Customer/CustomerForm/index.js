@@ -24,6 +24,7 @@ export default function CustomerForm() {
         name="customerFirstName"
         type="text"
         aria-label="Customer first name"
+        defaultValue=""
         required
       />
       <Label htmlFor="customerSecondName">Familienname</Label>
@@ -32,6 +33,7 @@ export default function CustomerForm() {
         name="customerSecondName"
         type="text"
         aria-label="Customer second name"
+        defaultValue=""
         required
       />
       <Label htmlFor="customerAddress">Adresse</Label>
@@ -40,6 +42,7 @@ export default function CustomerForm() {
         name="customerAddress"
         type="text"
         aria-label="Customer address"
+        defaultValue=""
         required
       />
     </StyledFormFieldset>

@@ -68,6 +68,7 @@ export default function TimeForm() {
           step="any"
           aria-label="Pause"
           required
+          defaultValue=""
         />
       </StyledTimeContainer>
     </StyledFormFieldset>

@@ -9,7 +9,7 @@ const StyledMaterialsSection = styled.section`
   padding: 20px;
 `;
 
-export default function MaterialsCard() {
+export default function MaterialsCard({}) {
   return (
     <StyledMaterialsSection>
       <StyledHeadlineOne>Materialien, Maschinen und Geräte</StyledHeadlineOne>
