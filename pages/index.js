@@ -1,10 +1,14 @@
 import NewForm from "../components/NewForm";
 
-export default function Home({ handleAddNewWorkReport ,newWorkReports, setNewWorkReports }) {
+export default function Home({
+  handleAddNewWorkReport,
+  newWorkReports,
+  setNewWorkReports,
+}) {
   return (
     <main>
       <NewForm
-      handleAddNewWorkReport={handleAddNewWorkReport}
+        handleAddNewWorkReport={handleAddNewWorkReport}
         newWorkReports={newWorkReports}
         setNewWorkReports={setNewWorkReports}
       />

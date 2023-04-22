@@ -19,7 +19,11 @@ const StyledNewFormButton = styled.button`
   bottom: 20px;
 `;
 
-export default function ReportsList({ newWorkReports, setNewWorkReports }) {
+export default function ReportsList({
+  handleCreatePdf,
+  newWorkReports,
+  setNewWorkReports,
+}) {
   const router = useRouter();
 
   function handleOnClick() {
@@ -30,6 +34,7 @@ export default function ReportsList({ newWorkReports, setNewWorkReports }) {
       <Forms
         newWorkReports={newWorkReports}
         setNewWorkReports={setNewWorkReports}
+        handleCreatePdf={handleCreatePdf}
       />
       <StyledNewFormButton
         type="button"

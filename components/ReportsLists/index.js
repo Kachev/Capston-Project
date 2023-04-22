@@ -58,11 +58,13 @@ const StyledIcon = styled(Image)`
   margin-right: 1rem;
 `;
 
-export default function Forms({ newWorkReports, setNewWorkReports }) {
-  const [workReports, setWorkReports] = useState(
-    newWorkReports.map(() => true)
-  );
-
+export default function Forms({
+  newWorkReports,
+  setNewWorkReports,
+  workReports,
+  setWorkReports,
+  handleCreatePdf,
+}) {
   const newWorkReportsRef = useRef();
   const [isExpanded, setIsExpanded] = useState(newWorkReports.map(() => false));
   const [needExpandBtn, setNeedExpandBtn] = useState(false);
@@ -94,6 +96,9 @@ export default function Forms({ newWorkReports, setNewWorkReports }) {
       {newWorkReports &&
         newWorkReports.map((workReport, id) => (
           <StyledLi isExpanded={isExpanded[id]} key={workReport.id}>
+            <StyledButton onClick={() => handleCreatePdf(workReport)}>
+              PDF erstellen
+            </StyledButton>
             <StyledButton onClick={() => handleDeleteReport(id)}>
               <StyledIcon
                 src="/icons8-remove-24.png"
@@ -228,7 +233,7 @@ export default function Forms({ newWorkReports, setNewWorkReports }) {
                       return null;
                     }
                   })}
-              </section>{" "}
+              </section>
               <StyledHeadlineThree>Pflanzen</StyledHeadlineThree>
               <section>
                 {Object.entries(workReport)
