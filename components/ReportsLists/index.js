@@ -67,6 +67,21 @@ export default function Forms({ newWorkReports, setNewWorkReports }) {
   const [isExpanded, setIsExpanded] = useState(newWorkReports.map(() => false));
   const [needExpandBtn, setNeedExpandBtn] = useState(false);
 
+  function handleDeleteReport(id) {
+    const shouldDelete = window.confirm(
+      "Sind Sie sicher, dass Sie diesen Bericht löschen möchten?"
+    );
+    if (shouldDelete) {
+      const updatedNewWorkReports = [...newWorkReports];
+      updatedNewWorkReports.splice(id, 1);
+      setNewWorkReports(updatedNewWorkReports);
+
+      const updatedWorkReports = [...workReports];
+      updatedWorkReports.splice(id, 1);
+      setWorkReports(updatedWorkReports);
+    }
+  }
+
   useEffect(() => {
     setNeedExpandBtn(
       newWorkReportsRef?.current?.scrollHeight >
@@ -78,7 +93,15 @@ export default function Forms({ newWorkReports, setNewWorkReports }) {
     <StyledUl ref={newWorkReportsRef}>
       {newWorkReports &&
         newWorkReports.map((workReport, id) => (
-          <StyledLi isExpanded={isExpanded[id]} key={workReport}>
+          <StyledLi isExpanded={isExpanded[id]} key={workReport.id}>
+            <StyledButton onClick={() => handleDeleteReport(id)}>
+              <StyledIcon
+                src="/icons8-remove-24.png"
+                width={24}
+                height={24}
+                alt="delete icon"
+              />
+            </StyledButton>
             {!needExpandBtn && (
               <StyledButton
                 aria-label="Button to expand and collapse reports"
@@ -225,28 +248,33 @@ export default function Forms({ newWorkReports, setNewWorkReports }) {
               </section>
               <StyledHeadlineThree>Arbeitsbeschreibung</StyledHeadlineThree>
               <section>
-                {Object.entries(workReport)
-                  .filter(([key]) => key.startsWith("description-"))
-                  .map(([key, value], index) => {
-                    if (key.endsWith("-textarea") && index > 0) {
+                {Object.entries(workReport).map(([key, value]) => {
+                  if (key.startsWith("descriptions-")) {
+                    return (
+                      <StyledDescriptionSection key={key}>
+                        <StyledParagraph>{value}</StyledParagraph>
+                      </StyledDescriptionSection>
+                    );
+                  } else if (key.startsWith("textarea")) {
+                    if (value.trim() === "") {
                       return (
                         <StyledDescriptionSection key={key}>
-                          {value.trim() === "" ? (
-                            <StyledParagraph>
-                              Keine zusätzliche Informationen
-                            </StyledParagraph>
-                          ) : (
-                            <StyledParagraph>{value}</StyledParagraph>
-                          )}
+                          <StyledParagraph>
+                            Keine zusätzliche Informationen
+                          </StyledParagraph>
                         </StyledDescriptionSection>
                       );
-                    } else if (!key.endsWith("-textarea")) {
+                    } else {
                       return (
-                        <StyledParagraph key={key}>{value}</StyledParagraph>
+                        <StyledDescriptionSection key={key}>
+                          <StyledParagraph>{value}</StyledParagraph>
+                        </StyledDescriptionSection>
                       );
                     }
+                  } else {
                     return null;
-                  })}
+                  }
+                })}
               </section>
             </div>
           </StyledLi>

@@ -16,7 +16,7 @@ const StyledHeadlineOne = styled.h1`
   margin-bottom: 8px;
 `;
 
-export default function TimeCard() {
+export default function TimeCard({}) {
   return (
     <StyledTimeContainer>
       <StyledHeadlineOne>Arbeitszeit</StyledHeadlineOne>
