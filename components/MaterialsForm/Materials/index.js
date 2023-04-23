@@ -55,7 +55,9 @@ export default function Materials({}) {
     <article>
       {newMaterials.map((dropDown, index) => (
         <StyledContainer key={dropDown.id}>
-          <Label htmlFor={`materials-${index}`}>Materialien</Label>
+          {index === 0 && (
+            <Label htmlFor={`materials-${index}`}>Materialien</Label>
+          )}
           <StyledSelect
             id={`materials-${index}`}
             name={`materials-${index}`}

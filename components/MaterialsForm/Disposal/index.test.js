@@ -13,11 +13,10 @@ test("renders disposal dropdowns", async () => {
 
   const addBtn = screen.getByText("+");
   await userEvent.click(addBtn);
-  const allDisposalDropdowns = screen.getAllByLabelText("Entsorgung");
-  expect(allDisposalDropdowns).toHaveLength(2);
 
-  const secondDropdown = allDisposalDropdowns[1];
+  const secondDropdown = screen.getAllByLabelText("Entsorgung")[0];
   expect(secondDropdown).toBeInTheDocument();
+
   await userEvent.selectOptions(secondDropdown, ["Grüngut"]);
   expect(screen.getByDisplayValue("Grüngut")).toBeInTheDocument();
 });

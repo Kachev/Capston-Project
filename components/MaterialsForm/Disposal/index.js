@@ -52,7 +52,9 @@ export default function Disposal() {
     <article>
       {newDisposal.map((dropDown, index) => (
         <StyledContainer key={dropDown.id}>
-          <Label htmlFor={`disposal-${index}`}>Entsorgung</Label>
+          {index === 0 && (
+            <Label htmlFor={`disposal-${index}`}>Entsorgung</Label>
+          )}
           <StyledSelect
             id={`disposal-${index}`}
             name={`disposal-${index}`}

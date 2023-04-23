@@ -51,7 +51,9 @@ export default function Machines() {
         <StyledContainer
           key={`${index}-${newMachines[index].machinesAndDevices}`}
         >
-          <Label htmlFor={`machinesAndDevices-${index}`}>Maschinen</Label>
+          {index === 0 && (
+            <Label htmlFor={`machinesAndDevices-${index}`}>Maschinen</Label>
+          )}
           <StyledSelect
             id={`machinesAndDevices-${index}`}
             name={`machinesAndDevices-${index}`}

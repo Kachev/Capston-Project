@@ -26,7 +26,7 @@ export const StyledSelect = styled.select`
   font-size: inherit;
   border: 2px solid black;
   border-radius: 0.5rem;
-  margin-bottom: 8px;
+  margin-top: 8px;
 `;
 
 export const Label = styled.label`

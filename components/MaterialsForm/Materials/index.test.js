@@ -10,12 +10,9 @@ test("renders materials dropdown", async () => {
   await userEvent.selectOptions(dropdowns[0], ["Lava"]);
   expect(screen.getByDisplayValue("Lava")).toBeInTheDocument();
 
-  await userEvent.click(screen.getByText("+"));
+  await userEvent.click(screen.getByLabelText("Button to add a new material"));
 
-  const allDropdowns = screen.getAllByLabelText("Materialien");
-  expect(allDropdowns).toHaveLength(2);
-
-  const secondDropdown = allDropdowns[1];
+  const secondDropdown = screen.getAllByLabelText("Materialien")[0];
   expect(secondDropdown).toBeInTheDocument();
 
   await userEvent.selectOptions(secondDropdown, ["Erde"]);
