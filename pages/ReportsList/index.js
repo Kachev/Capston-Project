@@ -3,9 +3,7 @@ import Forms from "../../components/ReportsLists";
 import { useRouter } from "next/router";
 
 const StyledSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+display:grid;
 `;
 const StyledNewFormButton = styled.button`
   width: 10rem;
@@ -17,9 +15,14 @@ const StyledNewFormButton = styled.button`
   box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
   position: sticky;
   bottom: 20px;
+ 
 `;
 
-export default function ReportsList({ newWorkReports, setNewWorkReports }) {
+export default function ReportsList({
+  handleCreatePdf,
+  newWorkReports,
+  setNewWorkReports,
+}) {
   const router = useRouter();
 
   function handleOnClick() {
@@ -30,6 +33,7 @@ export default function ReportsList({ newWorkReports, setNewWorkReports }) {
       <Forms
         newWorkReports={newWorkReports}
         setNewWorkReports={setNewWorkReports}
+        handleCreatePdf={handleCreatePdf}
       />
       <StyledNewFormButton
         type="button"

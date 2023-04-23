@@ -3,19 +3,22 @@ import { Label, Input, StyledFormFieldset } from "../Customer/CustomerForm";
 const StyledContainer = styled.div`
   display: flex;
   justify-content: space-around;
+  flex-wrap:wrap;
 `;
 
 const StyledTimeContainer = styled.div`
   margin-top: 10px;
   display: flex;
   justify-content: space-around;
+  flex-wrap:wrap;
 `;
 const InputPause = styled.input`
-  width: 80px;
+  width: 73.63px;
   height: 30px;
   font-size: inherit;
   border: 2px solid black;
   border-radius: 0.5rem;
+  margin-top:5px;
 `;
 export default function TimeForm() {
   return (

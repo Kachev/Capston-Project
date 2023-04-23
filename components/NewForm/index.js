@@ -7,15 +7,16 @@ import MaterialsCard from "../MaterialsCard";
 import JobDescriptionCard from "../JobDescriptionCard";
 
 const StyledSection = styled.section`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
 `;
 export const Form = styled.form`
-  display: flex;
+margin:8px;
+align-items: center;
+ /*  display: flex;
   flex-direction: column;
-  align-items: center;
-  min-width: 325px;
+  min-width: 325px; */
 `;
 
 export default function NewForm({ handleAddNewWorkReport }) {

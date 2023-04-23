@@ -4,6 +4,8 @@ import useLocalStorageState from "use-local-storage-state";
 import { WorkReports } from "../DB/data";
 import { uid } from "uid";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import createPdfFromWorkReport from "../components/PdfCreator/index.js";
 
 export default function App({ Component, pageProps }) {
   const [newWorkReports, setNewWorkReports] = useLocalStorageState(
@@ -23,6 +25,18 @@ export default function App({ Component, pageProps }) {
     });
   }
 
+  const [workReports, setWorkReports] = useState(
+    newWorkReports.map(() => true)
+  );
+
+  function handleCreatePdf(workReport) {
+    createPdfFromWorkReport(workReport).then((pdfBytes) => {
+      const blob = new Blob([pdfBytes], { type: "application/pdf" });
+      const url = URL.createObjectURL(blob);
+      window.open(url);
+    });
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -34,6 +48,9 @@ export default function App({ Component, pageProps }) {
         newWorkReports={newWorkReports}
         setNewWorkReports={setNewWorkReports}
         handleAddNewWorkReport={handleAddNewWorkReport}
+        workReports={workReports}
+        setWorkReports={setWorkReports}
+        handleCreatePdf={handleCreatePdf}
       />
     </>
   );

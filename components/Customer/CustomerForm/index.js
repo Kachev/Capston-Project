@@ -14,6 +14,7 @@ export const Input = styled.input`
   font-size: inherit;
   border: 2px solid black;
   border-radius: 0.5rem;
+  margin-top:5px;
 `;
 export default function CustomerForm() {
   return (

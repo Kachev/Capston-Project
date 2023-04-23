@@ -6,6 +6,7 @@ import Plants from "./Plants";
 const StyledFormFieldset = styled.fieldset`
   display: flex;
   justify-content: space-around;
+  flex-wrap:wrap;
 `;
 const StyledContainer = styled.div`
   max-width: 135px;
@@ -26,7 +27,7 @@ export const StyledSelect = styled.select`
   font-size: inherit;
   border: 2px solid black;
   border-radius: 0.5rem;
-  margin-bottom: 8px;
+  margin-top: 8px;
 `;
 
 export const Label = styled.label`

@@ -16,16 +16,14 @@ export const StyledAddButton = styled.button`
   margin-bottom: 8px;
 `;
 export const StyledDeleteButton = styled.button`
-  width: 40px;
-  height: 30px;
+  width: 35px;
+  height: 25px;
   background-color: #d11a2a;
   color: #fff;
-  border: none;
   border-radius: 10px;
   box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
   align-self: center;
-  margin-top: 10px;
-  margin-bottom: 8px;
+  margin-top: 9px;
 `;
 export default function Plants() {
   const [newPlant, setNewPlant] = useState([{ id: 1, plant: "" }]);
