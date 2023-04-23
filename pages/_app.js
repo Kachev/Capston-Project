@@ -1,11 +1,11 @@
 import GlobalStyle from "../styles";
-import Head from "next/head";
 import useLocalStorageState from "use-local-storage-state";
 import { WorkReports } from "../DB/data";
 import { uid } from "uid";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import createPdfFromWorkReport from "../components/PdfCreator/index.js";
+import Heading from "../components/Heading";
 
 export default function App({ Component, pageProps }) {
   const [newWorkReports, setNewWorkReports] = useLocalStorageState(
@@ -40,9 +40,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <Head>
-        <title>Capstone Project</title>
-      </Head>
+      <Heading>GrünApp</Heading>
       <Component
         {...pageProps}
         newWorkReports={newWorkReports}

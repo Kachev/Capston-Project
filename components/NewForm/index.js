@@ -8,22 +8,24 @@ import JobDescriptionCard from "../JobDescriptionCard";
 
 const StyledSection = styled.section`
   /* display: flex;
-  flex-direction: column;
-  align-items: center; */
+  flex-direction: column; */
+  align-items: center; 
+
 `;
 export const Form = styled.form`
 margin:8px;
-align-items: center;
- /*  display: flex;
-  flex-direction: column;
-  min-width: 325px; */
+
+`;
+const StyledMain = styled.main`
+gisplay:flex;
+flex-direction:column;
+align-items:center;
 `;
 
 export default function NewForm({ handleAddNewWorkReport }) {
   return (
-    <main>
+    <StyledMain>
       <StyledSection>
-        <Heading>Arbeitsbericht</Heading>
         <Form onSubmit={handleAddNewWorkReport}>
           <TimeCard />
           <Customer />
@@ -34,6 +36,6 @@ export default function NewForm({ handleAddNewWorkReport }) {
           </Button>
         </Form>
       </StyledSection>
-    </main>
+    </StyledMain>
   );
 }
