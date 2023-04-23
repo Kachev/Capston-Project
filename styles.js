@@ -10,10 +10,9 @@ export default createGlobalStyle`
     margin: 0;
     font-family: system-ui;
     padding:0;
-    background-color:#E5FADC;
-    /* 
+    background-color: #78B35B;   /* 
     
-Desktopscreen 992px to ... */
+Desktopscreen 992px to ... 
 
 @media only screen and (min-width: 992px){
 
@@ -25,7 +24,7 @@ Desktopscreen 992px to ... */
 
 }
 
-/* Small screen / tablet / 768px to 991px */
+ Small screen / tablet / 768px to 991px 
 
 @media only screen and (min-width: 768px){
 
@@ -37,7 +36,7 @@ Desktopscreen 992px to ... */
 
 }
 
-/* Smaller screen / tablet+phone / 480px to 768px */
+Smaller screen / tablet+phone / 480px to 768px 
 
 @media only screen and (min-width: 601px) {
 
@@ -48,8 +47,7 @@ Desktopscreen 992px to ... */
 ...
 
 }
-
-/* Extra small screen / smartphone / 280px to 479px */
+ Extra small screen / smartphone / 280px to 479px 
 
 @media (max-width: 600px) {
 
@@ -59,6 +57,6 @@ Desktopscreen 992px to ... */
 
 ...
 
-}
+} */
   }
 `;

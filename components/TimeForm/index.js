@@ -3,12 +3,14 @@ import { Label, Input, StyledFormFieldset } from "../Customer/CustomerForm";
 const StyledContainer = styled.div`
   display: flex;
   justify-content: space-around;
+  flex-wrap:wrap;
 `;
 
 const StyledTimeContainer = styled.div`
   margin-top: 10px;
   display: flex;
   justify-content: space-around;
+  flex-wrap:wrap;
 `;
 const InputPause = styled.input`
   width: 73.63px;

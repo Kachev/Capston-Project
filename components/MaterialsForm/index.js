@@ -6,6 +6,7 @@ import Plants from "./Plants";
 const StyledFormFieldset = styled.fieldset`
   display: flex;
   justify-content: space-around;
+  flex-wrap:wrap;
 `;
 const StyledContainer = styled.div`
   max-width: 135px;
