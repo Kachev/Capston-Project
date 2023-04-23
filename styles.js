@@ -11,9 +11,11 @@ export default createGlobalStyle`
     font-family: system-ui;
     padding:0;
     background-color:#E5FADC;
-    /* Desktopscreen 992px to ... */
+    /* 
+    
+Desktopscreen 992px to ... */
 
-@media screen and (min-width: 992px){
+@media only screen and (min-width: 992px){
 
 .mobile {display: none !important;}
 
@@ -23,9 +25,9 @@ export default createGlobalStyle`
 
 }
 
-/* Small screen / tablet / 760px to 991px */
+/* Small screen / tablet / 768px to 991px */
 
-@media (max-width: 991px) {
+@media only screen and (min-width: 768px){
 
 .mobile {display: block !important;}
 
@@ -35,9 +37,9 @@ export default createGlobalStyle`
 
 }
 
-/* Smaller screen / tablet+phone / 480px to 759px */
+/* Smaller screen / tablet+phone / 480px to 768px */
 
-@media (max-width: 759px) {
+@media only screen and (min-width: 601px) {
 
 .mobile {display: block !important;}
 
@@ -49,7 +51,7 @@ export default createGlobalStyle`
 
 /* Extra small screen / smartphone / 280px to 479px */
 
-@media (max-width: 479px) {
+@media (max-width: 600px) {
 
 .mobile {display: block !important;}
 

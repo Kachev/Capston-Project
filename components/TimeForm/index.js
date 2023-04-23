@@ -11,11 +11,12 @@ const StyledTimeContainer = styled.div`
   justify-content: space-around;
 `;
 const InputPause = styled.input`
-  width: 80px;
+  width: 73.63px;
   height: 30px;
   font-size: inherit;
   border: 2px solid black;
   border-radius: 0.5rem;
+  margin-top:5px;
 `;
 export default function TimeForm() {
   return (
