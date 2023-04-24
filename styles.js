@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { Nunito } from "next/font/google";
-const nunito = Nunito({
+export const nunito = Nunito({
   subsets: ["latin"],
 });
 export default createGlobalStyle`

@@ -8,6 +8,7 @@ import { StyledAddButton, StyledDeleteButton } from "../Plants";
 import { Input } from "../../Customer/CustomerForm";
 import { useState, useEffect } from "react";
 import { StyledContainer, StyledButtonContainer } from "../Machines";
+import Image from "next/image";
 
 export default function Disposal() {
   const [newDisposal, setNewDisposal] = useState([{ id: 1, disposal: "" }]);
@@ -106,7 +107,12 @@ export default function Disposal() {
                 aria-label="Button to delete a disposal"
                 onClick={() => handleDeleteDisposal(index)}
               >
-                <span>X</span>
+                <Image
+                  src="/remove.png"
+                  width={24}
+                  height={24}
+                  alt="Remove icon"
+                />
               </StyledDeleteButton>
             )}
             {newDisposal.length - 1 === index && (
@@ -115,7 +121,7 @@ export default function Disposal() {
                 aria-label="Button to add a new disposal"
                 onClick={handleAddDisposal}
               >
-                <span>+</span>
+                <Image src="/add.png" width={24} height={24} alt="Add icon" />
               </StyledAddButton>
             )}
           </StyledButtonContainer>

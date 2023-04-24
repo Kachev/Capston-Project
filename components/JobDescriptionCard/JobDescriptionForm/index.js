@@ -8,12 +8,18 @@ import {
   StyledDeleteButton,
 } from "../../MaterialsForm/Plants";
 import { useEffect } from "react";
+import Image from "next/image";
+import { nunito } from "../../../styles";
 
 const StyledTextarea = styled.textarea`
   min-height: 100px;
+  margin-top:8px;
+  opacity:0.8;
+  font-family: ${nunito.style.fontFamily};
+  font-size:17px;
 `;
 const StyledSelectContainer = styled.div`
-/*   display: flex;
+  /*   display: flex;
   justify-content: space-between; */
 `;
 const StyledDiv = styled.div`
@@ -94,7 +100,12 @@ export default function JobDescriptionForm() {
                 aria-label="Button to delete a Description."
                 onClick={() => handleDeleteDescription(index)}
               >
-                X
+                <Image
+                  src="/remove.png"
+                  width={24}
+                  height={24}
+                  alt="Remove icon"
+                />
               </StyledDeleteButton>
             )}
           </StyledDiv>
@@ -106,7 +117,7 @@ export default function JobDescriptionForm() {
           aria-label="Button to add a new description"
           onClick={handleAddNewDescription}
         >
-          +
+          <Image src="/add.png" width={24} height={24} alt="Add icon" />
         </StyledAddButton>
       </StyledContainer>
       <StyledContainer>

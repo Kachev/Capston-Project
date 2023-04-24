@@ -21,6 +21,8 @@ const StyledHeadlineTwo = styled.h2`
 `;
 
 const StyledLi = styled.li`
+background-color:#7CC592;
+text-align:center;
   margin-bottom: 8px;
   margin-top: 1rem;
   margin-right: 2rem;
@@ -36,9 +38,11 @@ const StyledLi = styled.li`
 `;
 const StyledUl = styled.ul`
   padding-left: 25px;
+  
 `;
 const StyledDescriptionSection = styled.section`
   border-top: 1px dashed black;
+  
 `;
 
 const StyledButton = styled.button`
@@ -68,13 +72,15 @@ const StyledDiv = styled.div`
 export default function Forms({
   newWorkReports,
   setNewWorkReports,
-  workReports,
-  setWorkReports,
   handleCreatePdf,
+
 }) {
   const newWorkReportsRef = useRef();
   const [isExpanded, setIsExpanded] = useState(newWorkReports.map(() => false));
   const [needExpandBtn, setNeedExpandBtn] = useState(false);
+  const [workReports, setWorkReports] = useState(
+    newWorkReports.map(() => true)
+  );
 
   function handleDeleteReport(id) {
     const shouldDelete = window.confirm(
@@ -106,7 +112,7 @@ export default function Forms({
             <StyledDiv>
               <StyledButton onClick={() => handleCreatePdf(workReport)}>
                 <StyledIcon
-                  src="/icons8-acrobat-24.png"
+                  src="/pdf-file.png"
                   width={24}
                   height={24}
                   alt="create Pdf"
@@ -114,7 +120,7 @@ export default function Forms({
               </StyledButton>
               <StyledButton onClick={() => handleDeleteReport(id)}>
                 <StyledIcon
-                  src="/icons8-remove-24.png"
+                  src="/delete.png"
                   width={30}
                   height={30}
                   alt="delete icon"
@@ -139,6 +145,7 @@ export default function Forms({
             )}
             <div>
               <StyledHeadlineTwo>Arbeitsbericht</StyledHeadlineTwo>
+
               <StyledParagraph>
                 <b>Datum:</b> {workReport.date}
               </StyledParagraph>

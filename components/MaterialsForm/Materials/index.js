@@ -8,6 +8,7 @@ import {
 } from "..";
 import { Input } from "../../Customer/CustomerForm";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Materials({}) {
   const [newMaterials, setNewMaterials] = useState([{ id: 1, materials: "" }]);
@@ -109,7 +110,12 @@ export default function Materials({}) {
                 aria-label="Button to delete a material"
                 onClick={() => handleDeleteMaterials(index)}
               >
-                X
+                <Image
+                  src="/remove.png"
+                  width={24}
+                  height={24}
+                  alt="Remove icon"
+                />
               </StyledDeleteButton>
             )}
             {newMaterials.length - 1 === index && (
@@ -118,7 +124,7 @@ export default function Materials({}) {
                 aria-label="Button to add a new material"
                 onClick={handleAddNewMaterials}
               >
-                +
+                <Image src="/add.png" width={24} height={24} alt="Add icon" />
               </StyledAddButton>
             )}
           </StyledButtonContainer>

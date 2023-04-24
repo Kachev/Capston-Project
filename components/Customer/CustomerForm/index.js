@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledFormFieldset = styled.fieldset`
   display: flex;
   flex-direction: column;
+  border:none;
 `;
 export const Label = styled.label`
   font-weight: bold;
@@ -15,6 +16,7 @@ export const Input = styled.input`
   border: 2px solid black;
   border-radius: 0.5rem;
   margin-top:5px;
+  opacity:0.8;
 `;
 export default function CustomerForm() {
   return (
