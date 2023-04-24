@@ -1,5 +1,8 @@
 import { createGlobalStyle } from "styled-components";
-
+import { Nunito } from "next/font/google";
+const nunito = Nunito({
+  subsets: ["latin"],
+});
 export default createGlobalStyle`
   *,
   *::before,
@@ -10,7 +13,7 @@ export default createGlobalStyle`
     margin: 0;
     font-family: system-ui;
     padding:0;
-    background-color: #78B35B;   /* 
+    background-color: #0A3F1A;   /* 
     
 Desktopscreen 992px to ... 
 
@@ -58,5 +61,9 @@ Smaller screen / tablet+phone / 480px to 768px
 ...
 
 } */
+
+font-family: ${nunito.style.fontFamily};
   }
+
+
 `;

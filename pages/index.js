@@ -1,17 +1,9 @@
-import NewForm from "../components/NewForm";
+import StartPage from "../components/StartPageForm";
 
-export default function Home({
-  handleAddNewWorkReport,
-  newWorkReports,
-  setNewWorkReports,
-}) {
+export default function Home() {
   return (
     <main>
-      <NewForm
-        handleAddNewWorkReport={handleAddNewWorkReport}
-        newWorkReports={newWorkReports}
-        setNewWorkReports={setNewWorkReports}
-      />
+      <StartPage />
     </main>
   );
 }
