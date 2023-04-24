@@ -39,8 +39,9 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <GlobalStyle />
       <Heading>GrünApp</Heading>
+      <GlobalStyle />
+
       <Component
         {...pageProps}
         newWorkReports={newWorkReports}

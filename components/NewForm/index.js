@@ -10,6 +10,12 @@ import Image from "next/image";
 export const Form = styled.form`
   margin: 8px;
 `;
+const StyledImage = styled(Image)`
+  border: none;
+  padding: 1px;
+  margin: 2px 4px;
+  vertical-align: middle;
+`;
 
 export default function NewForm({ handleAddNewWorkReport }) {
   return (
@@ -20,8 +26,8 @@ export default function NewForm({ handleAddNewWorkReport }) {
         <MaterialsCard />
         <JobDescriptionCard />
         <Button aria-label="Button for submiting information" type="submit">
-          Fertigstellen{" "}
-          <Image src="/save.png" width={24} height={24} alt="Save icon" />
+          Fertigstellen
+          <StyledImage src="/save.png" width={24} height={24} alt="Save icon" />
         </Button>
       </Form>
     </main>
