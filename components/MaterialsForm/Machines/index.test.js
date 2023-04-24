@@ -10,7 +10,7 @@ test("renders machines dropdown", async () => {
   await userEvent.selectOptions(dropdowns[0], ["Laubbläser"]);
   expect(screen.getByDisplayValue("Laubbläser")).toBeInTheDocument();
 
-  await userEvent.click(screen.getByText("+"));
+  await userEvent.click(screen.getByLabelText("Button to add a new Machine"));
 
   const secondDropdown = screen.getAllByLabelText("Maschinen")[0];
   expect(secondDropdown).toBeInTheDocument();

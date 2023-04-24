@@ -10,7 +10,7 @@ test("renders plant inputs", async () => {
   await userEvent.type(plantInputs[0], "Tomaten");
   expect(screen.getByDisplayValue("Tomaten")).toBeInTheDocument();
 
-  await userEvent.click(screen.getByText("+"));
+  await userEvent.click(screen.getByLabelText("Button to add a new plant"));
 
   const allPlantInputs = screen.getAllByLabelText("Pflanzen");
   expect(allPlantInputs).toHaveLength(2);
