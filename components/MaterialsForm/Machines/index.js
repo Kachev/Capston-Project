@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { StyledAddButton, StyledDeleteButton } from "../Plants";
 import { StyledSelect, Label } from "..";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export const StyledContainer = styled.div`
   display: flex;
@@ -75,7 +76,12 @@ export default function Machines() {
                 aria-label="Button to delete a Machine."
                 onClick={() => handleDeleteMachines(index)}
               >
-                X
+                <Image
+                  src="/remove.png"
+                  width={24}
+                  height={24}
+                  alt="Delete icon"
+                />
               </StyledDeleteButton>
             )}
             {newMachines.length - 1 === index && (
@@ -84,7 +90,7 @@ export default function Machines() {
                 aria-label="Button to add a new Machine"
                 onClick={handleAddNewMachines}
               >
-                +
+               <Image src="/add.png" width={24} height={24} alt="Add icon" />
               </StyledAddButton>
             )}
           </StyledButtonContainer>

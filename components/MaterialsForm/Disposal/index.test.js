@@ -11,7 +11,7 @@ test("renders disposal dropdowns", async () => {
   await userEvent.selectOptions(disposalDropdown, ["Bauschut"]);
   expect(screen.getByDisplayValue("Bauschut")).toBeInTheDocument();
 
-  const addBtn = screen.getByText("+");
+  const addBtn = screen.getByLabelText("Button to add a new disposal");
   await userEvent.click(addBtn);
 
   const secondDropdown = screen.getAllByLabelText("Entsorgung")[0];

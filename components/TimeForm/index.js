@@ -3,14 +3,14 @@ import { Label, Input, StyledFormFieldset } from "../Customer/CustomerForm";
 const StyledContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
+  margin
 `;
 
 const StyledTimeContainer = styled.div`
-  margin-top: 10px;
   display: flex;
   justify-content: space-around;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
 `;
 const InputPause = styled.input`
   width: 73.63px;
@@ -18,7 +18,12 @@ const InputPause = styled.input`
   font-size: inherit;
   border: 2px solid black;
   border-radius: 0.5rem;
-  margin-top:5px;
+  margin-top: 5px;
+  opacity: 0.8;
+`;
+const StyledTimeLabel = styled.label`
+font-weight:bold;
+margin-top:5px;
 `;
 export default function TimeForm() {
   return (
@@ -42,9 +47,9 @@ export default function TimeForm() {
         required
       />
       <StyledContainer>
-        <Label htmlFor="workerFrom">Von</Label>
-        <Label htmlFor="workerTo">Bis</Label>
-        <Label htmlFor="workerPause">Pause</Label>
+        <StyledTimeLabel htmlFor="workerFrom">Von</StyledTimeLabel>
+        <StyledTimeLabel htmlFor="workerTo">Bis</StyledTimeLabel>
+        <StyledTimeLabel htmlFor="workerPause">Pause</StyledTimeLabel>
       </StyledContainer>
       <StyledTimeContainer>
         <Input

@@ -2,26 +2,17 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { Label, Input } from "../../Customer/CustomerForm";
 import { StyledContainer, StyledButtonContainer } from "../Machines";
+import Image from "next/image";
 
 export const StyledAddButton = styled.button`
-  width: 40px;
-  height: 30px;
-  background-color: #0a0a23;
-  color: #fff;
+  background-color: inherit;
   border: none;
-  border-radius: 10px;
-  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
   align-self: center;
-  margin-top: 10px;
-  margin-bottom: 8px;
+  margin-top: 9px;
 `;
 export const StyledDeleteButton = styled.button`
-  width: 35px;
-  height: 25px;
-  background-color: #d11a2a;
-  color: #fff;
-  border-radius: 10px;
-  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+  background-color: inherit;
+  border: none;
   align-self: center;
   margin-top: 9px;
 `;
@@ -88,12 +79,21 @@ export default function Plants() {
                 aria-label="Button to delete a plant"
                 onClick={() => handleDeletePlant(index)}
               >
-                <span>X</span>
+                <Image
+                  src="/remove.png"
+                  width={24}
+                  height={24}
+                  alt="Remove icon"
+                />
               </StyledDeleteButton>
             )}
             {newPlant.length - 1 === index && (
-              <StyledAddButton type="button" aria-label="Button to add a new plant" onClick={handleAddPlant}>
-                <span>+</span>
+              <StyledAddButton
+                type="button"
+                aria-label="Button to add a new plant"
+                onClick={handleAddPlant}
+              >
+                <Image src="/add.png" width={24} height={24} alt="Add icon" />
               </StyledAddButton>
             )}
           </StyledButtonContainer>
