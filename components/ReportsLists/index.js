@@ -17,15 +17,15 @@ const StyledHeadlineTwo = styled.h2`
   border-radius: 10px;
   padding: 10px;
   text-align: center;
-  text-shadow: 2px 2px 3px white;
+  text-shadow: 2px 2px 8px;
 `;
 
 const StyledLi = styled.li`
-background-color:#7CC592;
-text-align:center;
+  background-color: #7cc592;
+  text-align: center;
   margin-bottom: 8px;
   margin-top: 1rem;
-  margin-right: 2rem;
+  
   list-style-type: none;
   box-shadow: 3px 5px 15px rgb(0, 0, 0, 0.5);
   border-radius: 0.5rem;
@@ -37,12 +37,10 @@ text-align:center;
       : ""};
 `;
 const StyledUl = styled.ul`
-  padding-left: 25px;
-  
+  padding: 3px;
 `;
 const StyledDescriptionSection = styled.section`
   border-top: 1px dashed black;
-  
 `;
 
 const StyledButton = styled.button`
@@ -73,7 +71,6 @@ export default function Forms({
   newWorkReports,
   setNewWorkReports,
   handleCreatePdf,
-
 }) {
   const newWorkReportsRef = useRef();
   const [isExpanded, setIsExpanded] = useState(newWorkReports.map(() => false));
@@ -145,7 +142,6 @@ export default function Forms({
             )}
             <div>
               <StyledHeadlineTwo>Arbeitsbericht</StyledHeadlineTwo>
-
               <StyledParagraph>
                 <b>Datum:</b> {workReport.date}
               </StyledParagraph>

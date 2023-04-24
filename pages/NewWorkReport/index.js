@@ -1,3 +1,4 @@
+import SavedReports from "../../components/NavBar";
 import NewForm from "../../components/NewForm";
 
 
@@ -13,6 +14,8 @@ export default function NewWorkReport({
         newWorkReports={newWorkReports}
         setNewWorkReports={setNewWorkReports}
       />
+      <SavedReports/>
+      
     </>
   );
 }
