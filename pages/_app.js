@@ -12,6 +12,8 @@ export default function App({ Component, pageProps }) {
     "WorkReports",
     { defaultValue: WorkReports }
   );
+  console.log(newWorkReports);
+  
   const router = useRouter();
   function handleAddNewWorkReport(event) {
     event.preventDefault();
