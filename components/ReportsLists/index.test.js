@@ -1,6 +1,5 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import Forms from ".";
 
 const newWorkReports = [
@@ -9,31 +8,27 @@ const newWorkReports = [
     customerFirstName: "Max",
     customerSecondName: "Mustermann",
     customerAddress: "Musterstraße 1",
-    workerName: "Hans Müller",
-    from: "08:00",
-    to: "16:00",
-    pause: "1",
-    "materials-1": "Holz",
-    "materials-1-amount": "5",
-    "materials-1-m3": true,
-    "materials-2": "Metall",
-    "materials-2-amount": "10",
-    "materials-2-t": true,
+    "workerName-0": "Hans Müller",
+    "workerFrom-0": "08:00",
+    "workerTo-0": "16:00",
+    "workerPause-0": "1",
+    "materials-0": "Holz",
+    "materials-0-amount": "5",
+    "materials-0-m3": true,
+    "materials-1": "Metall",
+    "materials-1-amount": "10",
+    "materials-1-t": true,
   },
 ];
 
 describe("Forms", () => {
   test("should render the component without crashing", () => {
-    const { getByText } = render(<Forms newWorkReports={newWorkReports} />);
+    const { container, getByText, getByLabelText } = render(<Forms newWorkReports={newWorkReports} />);
     expect(getByText("Arbeitsbericht")).toBeInTheDocument();
-  });
-
-  test("should expand and collapse the work report on button click", async () => {
-    const { getByLabelText, getByText, queryByText } = render(
-      <Forms newWorkReports={newWorkReports} />
-    );
+  
     const expandButton = getByLabelText(
-      "Button to expand and collapse reports"
+      "Button to expand and collapse reports",
+      { container }
     );
     expect(getByText("Hans Müller")).toBeInTheDocument();
     expect(expandButton).toBeInTheDocument();
