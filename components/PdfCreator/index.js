@@ -8,9 +8,22 @@ export default async function createPdfFromWorkReport(workReport) {
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
   page.setFont(font);
-  page.setFontSize(12);
+  page.setFontSize(14);
 
   // Text zum PDF-Dokument
+  const workers = Object.keys(workReport)
+    .filter((key) => key.startsWith("workerName"))
+    .map((key) => {
+      const workerIndex = key.slice(-1);
+      const workerName = workReport[key];
+      const workerFrom = workReport[`workerFrom-${workerIndex}`];
+      const workerTo = workReport[`workerTo-${workerIndex}`];
+      const workerPause = workReport[`workerPause-${workerIndex}`];
+      return `${workerName}: von ${workerFrom} bis ${workerTo} pause ${workerPause} Std.`;
+    })
+    .filter((worker) => worker !== null)
+    .join("\n");
+
   const plants = Object.entries(workReport)
     .filter(([key]) => key.startsWith("plant-"))
     .map(([key, value]) => {
@@ -84,10 +97,7 @@ export default async function createPdfFromWorkReport(workReport) {
     \nName: ${workReport.customerFirstName} ${workReport.customerSecondName}
     \nAdresse: ${workReport.customerAddress}
     \nMitarbeiter:
-    \nName: ${workReport.workerName}
-    \nVon: ${workReport.from}
-    \nBis: ${workReport.to}
-    \nPause: ${workReport.pause} Std.
+    \nName: ${workers}
     \nMaterialien:\n${materials}
     \nMaschinen:\n${machines}
     \nEntsorgung:\n${disposal}

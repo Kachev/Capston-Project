@@ -10,7 +10,7 @@ import { Input } from "../../Customer/CustomerForm";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-export default function Materials({}) {
+export default function Materials() {
   const [newMaterials, setNewMaterials] = useState([{ id: 1, materials: "" }]);
   const [hideButton, setHideButton] = useState(false);
 
