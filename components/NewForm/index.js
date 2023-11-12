@@ -16,6 +16,10 @@ const StyledImage = styled(Image)`
   margin: 2px 4px;
   vertical-align: middle;
 `;
+const SaveButtonContainer = styled.div`
+display:flex;
+justify-content:center;
+`;
 
 export default function NewForm({ handleAddNewWorkReport }) {
   return (
@@ -25,10 +29,17 @@ export default function NewForm({ handleAddNewWorkReport }) {
         <Customer />
         <MaterialsCard />
         <JobDescriptionCard />
-        <Button aria-label="Button for submiting information" type="submit">
-          Fertigstellen
-          <StyledImage src="/save.png" width={24} height={24} alt="Save icon" />
-        </Button>
+        <SaveButtonContainer>
+          <Button aria-label="Button for submiting information" type="submit">
+            Fertigstellen
+            <StyledImage
+              src="/save.png"
+              width={24}
+              height={24}
+              alt="Save icon"
+            />
+          </Button>
+        </SaveButtonContainer>
       </Form>
     </main>
   );
