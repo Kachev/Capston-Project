@@ -63,8 +63,20 @@ export default function Disposal() {
           >
             <option value="">Bitte auswählen</option>
             <option value="Grüngut">Grüngut</option>
-            <option value="Bauschut">Bauschut</option>
-            <option value="Oberboden">Oberboden</option>
+            <option value="Gras/Laub">Gras / Laub</option>
+            <option value="Oberboden sauber">Oberboden sauber</option>
+            <option value="Oberboden verunreinigt">
+              Oberboden verunreinigt
+            </option>
+            <option value="Bodengemische verunreinigt">
+              Bodengemische verunreinigt
+            </option>
+            <option value="Bauschut sauber">Bauschut sauber</option>
+            <option value="Wurzelstöcke">Wurzelstöcke</option>
+            <option value="Behandeltes Holz">Behandeltes Holz</option>
+            <option value="Gewerbeabfälle, gemischt">
+              Gewerbeabfälle, gemischt
+            </option>
           </StyledSelect>
 
           <Input

@@ -13,10 +13,10 @@ import { nunito } from "../../../styles";
 
 const StyledTextarea = styled.textarea`
   min-height: 100px;
-  margin-top:8px;
-  opacity:0.8;
+  margin-top: 8px;
+  opacity: 0.8;
   font-family: ${nunito.style.fontFamily};
-  font-size:17px;
+  font-size: 17px;
 `;
 const StyledSelectContainer = styled.div`
   /*   display: flex;
@@ -89,10 +89,43 @@ export default function JobDescriptionForm() {
               onChange={(event) => handleDescriptionChange({ event, index })}
             >
               <option value="">Bitte auswählen</option>
-              <option value="Apfelbaum gepflanzt">Apfelbaum gepflanzt</option>
+              <option value="Pflanzen gepflanzt">Apfelbaum gepflanzt</option>
+              <option value="Baum im Form geschnitten">
+                Baum im Form geschnitten
+              </option>
               <option value="Unkraut entfernt">Unkraut entfernt</option>
-              <option value="Hecke geschnitten">Hecke geschnitten</option>
+              <option value="Hecken geschnitten">Hecke geschnitten</option>
               <option value="Pflanzbeet bepflanzt">Pflanzbeet bepflanzt</option>
+              <option value="Rasen gemäht">Rasen gemäht</option>
+              <option value="Pflanzbeet mit Lava abgedeckt">
+                Pflanzbeet mit Lava abgedeckt
+              </option>
+              <option value="Grasnarbe entfernt">Grasnarbe entfernt</option>
+              <option value="Oberboden aufgenommen">
+                Oberboden aufgenommen
+              </option>
+              <option value="Oberboden aufgetragen">
+                Oberboden aufgetragen
+              </option>
+              <option value="Unterbau aufgenommen">Unterbau aufgenommen</option>
+              <option value="Unterbau erstellt,planiert und verdichtet">
+                Unterbau erstellt und verdichtet
+              </option>
+              <option value="Unterbau verdichtet">Unterbau verdichtet</option>
+              <option value="Splittbettung erstellt und planiert">
+                Splittbettung erstellt
+              </option>
+              <option value="Plattenbelag verlegt">Plattenbelag verlegt</option>
+              <option value="Pflastersteine verlegt">
+                Pflastersteine verlegt
+              </option>
+              <option value="Belagsfläche verfugt">Belagsfläche verfugt</option>
+              <option value="Pflasterfläche verfugt">
+                Pflasterfläche verfugt
+              </option>
+              <option value="Leistensteine auf Betonbettung verlegt">
+                Leistensteine auf Betonbettung verlegt
+              </option>
             </StyledSelect>
             {!hideButton && (
               <StyledDeleteButton

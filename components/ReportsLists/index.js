@@ -282,6 +282,21 @@ export default function Forms({
                     }
                   })}
               </section>
+              <section>
+                <StyledHeadlineThree>Dünger und Pflanzenschutzmittel</StyledHeadlineThree>
+                {Object.entries(workReport).filter(([key]) => key.startsWith("fertilizer-")).map(([key,value])=>{
+                  if(key.endsWith("-amount")){
+                    const fertilizerName=workReport[key.replace("-amount","")];
+                    return(
+                      <StyledParagraph key={key}>
+                        <b>{fertilizerName}</b>
+                        <br/>
+                        Menge: {value}
+                      </StyledParagraph>
+                    )
+                  }
+                })}
+              </section>
               <StyledHeadlineThree>Arbeitsbeschreibung</StyledHeadlineThree>
               <section>
                 {Object.entries(workReport).map(([key, value]) => {

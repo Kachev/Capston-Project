@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { findByText, render } from "@testing-library/react";
 import Forms from ".";
 
 const newWorkReports = [
@@ -8,7 +8,7 @@ const newWorkReports = [
     customerFirstName: "Max",
     customerSecondName: "Mustermann",
     customerAddress: "Musterstraße 1",
-    "workerName-0": "Hans Müller",
+    "workerName-0": "Hans",
     "workerFrom-0": "08:00",
     "workerTo-0": "16:00",
     "workerPause-0": "1",
@@ -30,7 +30,7 @@ describe("Forms", () => {
       "Button to expand and collapse reports",
       { container }
     );
-    expect(getByText("Hans Müller")).toBeInTheDocument();
+    expect(findByTextByText("Hans")).toBeInTheDocument();
     expect(expandButton).toBeInTheDocument();
   });
 });
