@@ -8,8 +8,8 @@ test("renders disposal dropdowns", async () => {
   const disposalDropdown = screen.getByLabelText("Entsorgung");
   expect(disposalDropdown).toBeInTheDocument();
 
-  await userEvent.selectOptions(disposalDropdown, ["Bauschut"]);
-  expect(screen.getByDisplayValue("Bauschut")).toBeInTheDocument();
+  await userEvent.selectOptions(disposalDropdown, ["Bauschut sauber"]);
+  expect(screen.getByDisplayValue("Bauschut sauber")).toBeInTheDocument();
 
   const addBtn = screen.getByLabelText("Button to add a new disposal");
   await userEvent.click(addBtn);

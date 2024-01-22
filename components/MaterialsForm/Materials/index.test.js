@@ -15,6 +15,6 @@ test("renders materials dropdown", async () => {
   const secondDropdown = screen.getAllByLabelText("Materialien")[0];
   expect(secondDropdown).toBeInTheDocument();
 
-  await userEvent.selectOptions(secondDropdown, ["Erde"]);
-  expect(screen.getByDisplayValue("Erde")).toBeInTheDocument();
+  await userEvent.selectOptions(secondDropdown, ["Oberboden"]);
+  expect(screen.getByDisplayValue("Oberboden")).toBeInTheDocument();
 });
