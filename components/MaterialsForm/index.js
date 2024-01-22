@@ -3,11 +3,12 @@ import Disposal from "./Disposal";
 import Machines from "./Machines";
 import Materials from "./Materials";
 import Plants from "./Plants";
+import Fertilizer from "./Fertilizer";
 const StyledFormFieldset = styled.fieldset`
   display: flex;
   justify-content: space-around;
-  flex-wrap:wrap;
-  border:none;
+  flex-wrap: wrap;
+  border: none;
 `;
 const StyledContainer = styled.div`
   max-width: 135px;
@@ -29,14 +30,13 @@ export const StyledSelect = styled.select`
   border: 2px solid black;
   border-radius: 0.5rem;
   margin-top: 8px;
-  opacity:0.8;
+  opacity: 0.8;
 `;
 
 export const Label = styled.label`
   font-weight: bold;
   height: 10px;
   margin-bottom: 8px;
-  
 `;
 
 export default function MaterialsForm() {
@@ -45,6 +45,7 @@ export default function MaterialsForm() {
       <StyledContainer>
         <Materials />
         <Machines />
+        <Fertilizer/>
       </StyledContainer>
       <StyledContainer>
         <Disposal />

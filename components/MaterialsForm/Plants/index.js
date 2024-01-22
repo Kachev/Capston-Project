@@ -56,14 +56,15 @@ export default function Plants() {
     <article>
       {newPlant.map((plant, index) => (
         <StyledContainer key={plant.id}>
-          <Label htmlFor={`plant-${index}`}>Pflanzen</Label>
+          {index === 0 && <Label htmlFor={`plant-${index}`}>Pflanzen</Label>}
           <Input
             id={`plant-${index}`}
             name={`plant-${index}`}
+            placeholder="Pflanze eingeben"
             type="text"
             onChange={(event) => handlePlantChange(event, index)}
           />
-          <Label htmlFor={`plant-${index}-amount`}>Menge</Label>
+          {/* <Label htmlFor={`plant-${index}-amount`}>Menge</Label> */}
           <Input
             id={`plant-${index}-amount`}
             name={`plant-${index}-amount`}

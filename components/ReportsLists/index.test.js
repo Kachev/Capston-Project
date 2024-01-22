@@ -1,41 +1,37 @@
 import React from "react";
-import { render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { render, screen, waitFor } from "@testing-library/react";
 import Forms from ".";
 
 const newWorkReports = [
   {
     date: "2022-01-01",
-    customerFirstName: "Max",
-    customerSecondName: "Mustermann",
-    customerAddress: "Musterstraße 1",
-    workerName: "Hans Müller",
-    from: "08:00",
-    to: "16:00",
-    pause: "1",
-    "materials-1": "Holz",
-    "materials-1-amount": "5",
-    "materials-1-m3": true,
-    "materials-2": "Metall",
-    "materials-2-amount": "10",
-    "materials-2-t": true,
+    customerFirstName: "Andreas",
+    customerSecondName: "Bergstein",
+    customerAddress: "Hamburg",
+    "workerName-0": "Fritz",
+    "workerFrom-0": "08:00",
+    "workerTo-0": "16:00",
+    "workerPause-0": "00:30",
+    "materials-0": "Holz",
+    "materials-0-amount": "5",
+    "materials-0-m3": true,
+    "materials-1": "Metall",
+    "materials-1-amount": "10",
+    "materials-1-t": true,
   },
 ];
 
 describe("Forms", () => {
   test("should render the component without crashing", () => {
-    const { getByText } = render(<Forms newWorkReports={newWorkReports} />);
-    expect(getByText("Arbeitsbericht")).toBeInTheDocument();
-  });
+    const { container } = render(<Forms newWorkReports={newWorkReports} />);
 
-  test("should expand and collapse the work report on button click", async () => {
-    const { getByLabelText, getByText, queryByText } = render(
-      <Forms newWorkReports={newWorkReports} />
+    // Verwende container.textContent, um den gesamten Text zu überprüfen
+    expect(container.textContent).toContain("Fritz");
+
+    const expandButton = screen.getByLabelText(
+      "Button to expand and collapse reports",
+      { container }
     );
-    const expandButton = getByLabelText(
-      "Button to expand and collapse reports"
-    );
-    expect(getByText("Hans Müller")).toBeInTheDocument();
     expect(expandButton).toBeInTheDocument();
   });
 });

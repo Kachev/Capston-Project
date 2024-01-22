@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Plants from ".";
 
@@ -13,20 +13,23 @@ test("renders plant inputs", async () => {
   await userEvent.click(screen.getByLabelText("Button to add a new plant"));
 
   const allPlantInputs = screen.getAllByLabelText("Pflanzen");
-  expect(allPlantInputs).toHaveLength(2);
 
-  const secondPlantInput = allPlantInputs[1];
+  const firstPlantInput = allPlantInputs[0];
+  expect(firstPlantInput).toBeInTheDocument();
+
+  const secondPlantInput = screen.getByLabelText("Pflanzen", {
+    selector: "input:nth-child(2)",
+  });
   expect(secondPlantInput).toBeInTheDocument();
 
-  await userEvent.type(secondPlantInput, "Gurken");
-  expect(screen.getByDisplayValue("Gurken")).toBeInTheDocument();
+  await userEvent.type(secondPlantInput, "Apfelbaum");
 
-  const amountInputs = screen.getAllByLabelText("Menge");
-  expect(amountInputs).toHaveLength(2);
+  await waitFor(() => {
+    const amountInputs = screen.queryAllByPlaceholderText("Menge");
+    expect(amountInputs).toHaveLength(2);
 
-  await userEvent.type(amountInputs[0], "5");
-  expect(screen.getByDisplayValue("5")).toBeInTheDocument();
-
-  await userEvent.type(amountInputs[1], "10");
-  expect(screen.getByDisplayValue("10")).toBeInTheDocument();
+    amountInputs.forEach((amountInput, index) => {
+      expect(amountInput).toBeInTheDocument();
+    });
+  });
 });

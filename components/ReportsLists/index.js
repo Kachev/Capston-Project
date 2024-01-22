@@ -25,7 +25,7 @@ const StyledLi = styled.li`
   text-align: center;
   margin-bottom: 8px;
   margin-top: 1rem;
-  
+
   list-style-type: none;
   box-shadow: 3px 5px 15px rgb(0, 0, 0, 0.5);
   border-radius: 0.5rem;
@@ -99,7 +99,7 @@ export default function Forms({
       newWorkReportsRef?.current?.scrollHeight >
         newWorkReportsRef?.current?.clientHeight
     );
-  }, []);
+  }, [newWorkReportsRef.current]);
 
   return (
     <StyledUl ref={newWorkReportsRef}>
@@ -158,22 +158,40 @@ export default function Forms({
               </section>
               <StyledHeadlineThree>Mitarbeiter</StyledHeadlineThree>
               <section>
-                <StyledParagraph>
-                  <b>Name: </b>
-                  {workReport.workerName}
-                </StyledParagraph>
-                <StyledParagraph>
-                  <b>Von: </b>
-                  {workReport.from}
-                </StyledParagraph>
-                <StyledParagraph>
-                  <b>Bis: </b>
-                  {workReport.to}
-                </StyledParagraph>
-                <StyledParagraph>
-                  <b>Pause: </b>
-                  {workReport.pause} Std.
-                </StyledParagraph>
+                {Object.keys(workReport)
+                  .filter((key) => key.startsWith("workerName"))
+                  .map((key) => {
+                    const workerIndex = key.slice(-1);
+                    const workerName = workReport[key];
+                    const workerFrom = workReport[`workerFrom-${workerIndex}`];
+                    const workerTo = workReport[`workerTo-${workerIndex}`];
+                    const workerPause =
+                      workReport[`workerPause-${workerIndex}`];
+
+                    return (
+                      <div key={key}>
+                        <StyledParagraph>
+                          <b>
+                            Name:
+                            <br />
+                            {workerName}
+                          </b>
+                        </StyledParagraph>
+                        <StyledParagraph>
+                          <b>Von: </b>
+                          {workerFrom}
+                        </StyledParagraph>
+                        <StyledParagraph>
+                          <b>Bis: </b>
+                          {workerTo}
+                        </StyledParagraph>
+                        <StyledParagraph>
+                          <b>Pause: </b>
+                          {workerPause} Std.
+                        </StyledParagraph>
+                      </div>
+                    );
+                  })}
               </section>
               <StyledHeadlineThree>Materialien</StyledHeadlineThree>
               <section>
@@ -214,7 +232,7 @@ export default function Forms({
                   .map(([, value]) => (
                     <StyledParagraph key={value}>{value}</StyledParagraph>
                   ))}
-              </section>{" "}
+              </section>
               <StyledHeadlineThree>Entsorgung</StyledHeadlineThree>
               <section>
                 {Object.entries(workReport)
@@ -257,6 +275,26 @@ export default function Forms({
                       return (
                         <StyledParagraph key={key}>
                           <b>{plantName}</b>
+                          <br />
+                          Menge: {value}
+                        </StyledParagraph>
+                      );
+                    }
+                  })}
+              </section>
+              <section>
+                <StyledHeadlineThree>
+                  Dünger und Pflanzenschutzmittel
+                </StyledHeadlineThree>
+                {Object.entries(workReport)
+                  .filter(([key]) => key.startsWith("fertilizer-"))
+                  .map(([key, value]) => {
+                    if (key.endsWith("-amount")) {
+                      const fertilizerName =
+                        workReport[key.replace("-amount", "")];
+                      return (
+                        <StyledParagraph key={key}>
+                          <b>{fertilizerName}</b>
                           <br />
                           Menge: {value}
                         </StyledParagraph>

@@ -68,6 +68,17 @@ export default function Machines() {
             <option value="Rasenmäher">Rasenmäher</option>
             <option value="Laubbläser">Laubbläser</option>
             <option value="Kompaktbagger">Kompaktbagger</option>
+            <option value="Abbruchhammer Bagger">Abruchhammer Bagger</option>
+            <option value="Abbruchhammer Handgerät">
+              Abbruchhammer Handgerät
+            </option>
+            <option value="Stabheckenschere">Stabheckenschere</option>
+            <option value="Vertikutierer">Vertikutierer</option>
+            <option value="Bohrmaschine">Bohrmaschine</option>
+            <option value="Akkubohrmaschine">Akkubohrmaschine</option>
+            <option value="Akkuschrauber">Akkuschrauber</option>
+            <option value="Flex Groß">Flex Groß</option>
+            <option value="Flex Klein">Flex Klein</option>
           </StyledSelect>
           <StyledButtonContainer>
             {!hideButton && (
@@ -90,7 +101,7 @@ export default function Machines() {
                 aria-label="Button to add a new Machine"
                 onClick={handleAddNewMachines}
               >
-               <Image src="/add.png" width={24} height={24} alt="Add icon" />
+                <Image src="/add.png" width={24} height={24} alt="Add icon" />
               </StyledAddButton>
             )}
           </StyledButtonContainer>

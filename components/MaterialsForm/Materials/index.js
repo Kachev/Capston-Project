@@ -10,7 +10,7 @@ import { Input } from "../../Customer/CustomerForm";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-export default function Materials({}) {
+export default function Materials() {
   const [newMaterials, setNewMaterials] = useState([{ id: 1, materials: "" }]);
   const [hideButton, setHideButton] = useState(false);
 
@@ -65,9 +65,32 @@ export default function Materials({}) {
             onChange={(event) => handleMaterialChange({ event, index })}
           >
             <option value="">Bitte auswählen</option>
-            <option value="Erde">Erde</option>
+            <option value=""></option>
+            <option value="Pflanzsubstrat">Pflanzsubstrat</option>
+            <option value="Intensivsubstrat">Intensivsubstrat</option>
+            <option value="Rasensubstrat">Rasensubstrat</option>
+            <option value="Extensivsubstrat">Extensivsubstat</option>
+            <option value="Baumsubstrat">Baumsubstrat</option>
+            <option value="Moorbeetsubstrat">Moorbeetsubstrat</option>
             <option value="Lava">Lava</option>
-            <option value="Unterbau">Unterbau</option>
+            <option value="Oberboden">Oberboden</option>
+            <option value=""></option>
+            <option value="">- Baumaterialien -</option>
+            <option value=""></option>
+            <option value="Rollkies 4/8">Rollkies 4/8</option>
+            <option value="Rollkies 8/16">Rollkies 8/16</option>
+            <option value="Rollkies 16/32">Rollkies 16/32</option>
+            <option value="Frostschutzkies">Frostschutzkies</option>
+            <option value="RC Beton 0/8">RC Beton 0/8</option>
+            <option value="RC Beton 8/16">RC Beton 8/16</option>
+            <option value="RC Beton 16/32">RC Beton 16/32</option>
+            <option value="Splitt 5/8">Splitt 5/8</option>
+            <option value="Splitt 8/11">Splitt 8/11</option>
+            <option value="Splitt 11/16">Splitt 11/16</option>
+            <option value="Schotter 8/16">Schotter 8/16</option>
+            <option value="Schotter 16/32">Schotter 16/32</option>
+            <option value="Brechsand">Brechsand</option>
+            <option value="Manchinger Spielsand">Manchinger Spielsand</option>
           </StyledSelect>
 
           <Input
