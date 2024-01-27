@@ -2,8 +2,8 @@ import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 const PLACEHOLDER = "__PLACEHOLDER__";
 
 function drawTable(page, rows, startX, startY, cellWidth, cellHeight, margin) {
-  const lineWidth = 0.5; // Dicke der Trennlinien
-  const placeholderWidth = 50; // Breite des Platzhalters
+  const lineWidth = 0.5;
+  const placeholderWidth = 50; 
 
   let y = startY;
 
@@ -34,7 +34,10 @@ function drawTable(page, rows, startX, startY, cellWidth, cellHeight, margin) {
           }
 
           // Zeichne die vertikale Trennlinie
-          if (columnIndex < row.length && row[columnIndex + 1] !== PLACEHOLDER) {
+          if (
+            columnIndex < row.length &&
+            row[columnIndex + 1] !== PLACEHOLDER
+          ) {
             page.drawRectangle({
               x: x + cellWidth,
               y: y - cellHeight,
@@ -167,10 +170,9 @@ export default async function createPdfFromWorkReport(workReport) {
 
   const textAreaTableRows = descriptionsTextArea.map((textArea) => {
     const row = [textArea.name];
-    const placeholdersToAdd = 1 - row.length + 1; // Hier kannst du die gewünschte Anzahl der Platzhalter einstellen
+    const placeholdersToAdd = 1 - row.length + 1; 
 
-    if(row.length > 85) {
-      
+    if (row.length > 85) {
     }
     for (let i = 0; i < placeholdersToAdd; i++) {
       row.push(PLACEHOLDER);
@@ -247,8 +249,8 @@ export default async function createPdfFromWorkReport(workReport) {
   const combinedMaterialTableRows = materialTableRows.map(
     (materialRow, index) => [
       ...materialRow,
-      ...(disposalTableRows[index] || []), // Prüfen, ob disposalTableRows[index] vorhanden ist
-      ...(plantsTableRows[index] || []),   // Prüfen, ob plantsTableRows[index] vorhanden ist
+      ...(disposalTableRows[index] || []), 
+      ...(plantsTableRows[index] || []),
     ]
   );
   const combinedTableRows = fertilizerTableRows.map((fertilizerRow, index) => [
@@ -300,42 +302,8 @@ export default async function createPdfFromWorkReport(workReport) {
   ];
   console.log("oops", textAreaTableRows);
   drawTable(page, tableRows, 33, height - 25, 90, 10, 17);
-  /* const lines = text.split("\n");
- for (let i = 0; i < lines.length; i++) {
-    const textWidth = font.widthOfTextAtSize(lines[i], 12);
-    const textHeight = font.heightAtSize(12);
-    const textX = x;
-    const textY = y - i * textHeight - 10;
-    page.drawText(lines[i], { x: textX, y: textY });
-  } */
 
   const pdfBytes = await pdfDoc.save();
 
   return pdfBytes;
 }
-/* Arbeitsbericht:\n
-
-Datum: ${workReport.date}
-\nKunde: 
-\nName: ${workReport.customerFirstName} ${workReport.customerSecondName}
-\nAdresse: ${workReport.customerAddress}
-\nMitarbeiter:
-\nName: ${workers}
-\nMaterialien:\n${materials}
-\nMaschinen:\n${machines}
-
-\nPflanzen:\n${plants}
-\nArbeitsbeschreibung:\n${description}
-\nZusätzliche Informationen:\n${workReport[`textarea-description`]}  */
-
-/*  const plants = Object.entries(workReport)
-  .filter(([key]) => key.startsWith("plant-"))
-  .map(([key, value]) => {
-    if (key.endsWith("-amount")) {
-      const plantName = workReport[key.replace("-amount", "")];
-      return `${plantName}: ${value} Stk.`;
-    } else {
-      return null;
-    }
-  })
-  .join(`\n`); */
